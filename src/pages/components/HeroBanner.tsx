@@ -15,7 +15,7 @@ const HeroBanner = () => {
         </div>
     </div>
     <div className="w-full md:w-1/3 h-auto mt-4 md:mt-0">
-        <img src="https://i.postimg.cc/ncGBx33t/Hero-Banner.png" alt="Shopzzila Banner" className="w-full h-auto" />
+        <img src="https://i.postimg.cc/9fY8YJJX/Hero-Banner-1.png" alt="Shopzzila Banner" className="w-full h-auto" />
     </div>
 </div>
 

@@ -15,9 +15,9 @@ const Navbar = () => {
     
       <div className="hidden md:flex justify-around w-1/2 items-center text-gray-600 gap-4">
         <Link to="/" className="hover:text-primary">Home </Link>
-        <Link to="/" className="hover:text-primary">Products </Link>
-        <Link to="/" className="hover:text-primary">About </Link>
-        <Link to='/'><ShoppingBag  className="text-gray-600 hover:text-primary"/></Link>
+        <Link to="/products" className="hover:text-primary">Products </Link>
+        <Link to="/about" className="hover:text-primary">About </Link>
+        <Link to='/cart'><ShoppingBag  className="text-gray-600 hover:text-primary"/></Link>
       </div>
 
       <button onClick={toggleMenu} className="md:hidden flex flex-col justify-center items-center mx-5">
@@ -27,11 +27,11 @@ const Navbar = () => {
       </button>
 
       {isOpen && (
-        <div className="md:hidden flex flex-col items-center text-gray-600 gap-12 text-xl absolute h-96 top-16 left-0 right-0 bg-white">
+        <div className="md:hidden flex flex-col items-center justify-evenly text-gray-600  text-4xl absolute h-full  z-10 top-16 left-0 right-0 bg-white">
           <Link to="/" className="hover:text-primary">Home</Link>
           <Link to="/products" className="hover:text-primary">Products</Link>
-          <Link to="/" className="hover:text-primary">About</Link>
-          <Link to='/'><ShoppingBag  className="text-gray-600 hover:text-primary"/></Link>
+          <Link to="/about" className="hover:text-primary">About</Link>
+          <Link to='/cart'>Cart</Link>
         </div>
       )}
     </nav>
