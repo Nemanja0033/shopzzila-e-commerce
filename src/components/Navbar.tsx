@@ -1,3 +1,4 @@
+import { ShoppingBag } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -16,6 +17,7 @@ const Navbar = () => {
         <Link to="/" className="hover:text-primary">Home </Link>
         <Link to="/" className="hover:text-primary">Products </Link>
         <Link to="/" className="hover:text-primary">About </Link>
+        <Link to='/'><ShoppingBag  className="text-gray-600 hover:text-primary"/></Link>
       </div>
 
       <button onClick={toggleMenu} className="md:hidden flex flex-col justify-center items-center mx-5">
@@ -25,10 +27,11 @@ const Navbar = () => {
       </button>
 
       {isOpen && (
-        <div className="md:hidden flex flex-col items-center text-gray-600 gap-2 absolute top-16 left-0 right-0 bg-white">
+        <div className="md:hidden flex flex-col items-center text-gray-600 gap-12 text-xl absolute h-96 top-16 left-0 right-0 bg-white">
           <Link to="/" className="hover:text-primary">Home</Link>
-          <Link to="/" className="hover:text-primary">Products</Link>
+          <Link to="/products" className="hover:text-primary">Products</Link>
           <Link to="/" className="hover:text-primary">About</Link>
+          <Link to='/'><ShoppingBag  className="text-gray-600 hover:text-primary"/></Link>
         </div>
       )}
     </nav>
