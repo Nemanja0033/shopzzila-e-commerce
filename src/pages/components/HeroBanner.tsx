@@ -1,10 +1,30 @@
 import { Button } from "@mui/material"
 import { ArrowDown } from "lucide-react"
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 const HeroBanner = () => {
+
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const bannerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if(heroRef.current) {
+      gsap.from(heroRef.current, { opacity: 0, x: -400})
+      gsap.to(heroRef.current, {opacity: 1, x: 0, delay: 0.3})
+    }
+  }, [])
+
+  useEffect(() => {
+    if(bannerRef.current) {
+      gsap.from(bannerRef.current, { opacity: 0, x: 50})
+      gsap.to(bannerRef.current, {opacity: 1, x: 0, delay: 0.3})
+    }
+  }, [])
+
   return (
     <div className="w-full h-auto flex flex-col md:flex-row justify-between">
-    <div className="w-full text-center mt-[150px]">
+    <div ref={heroRef} className="w-full text-center mt-[150px]">
         <h1 className="text-gray-700 text-5xl  font-bold">Welcome To The <span className="text-primary">Shopzzila!</span></h1>
         <br />
         <p className="text-gray-500 text-xl">Unleash unbeatable deals and exclusive treasures, all in one place. Shop smart, live better!</p>
@@ -14,7 +34,7 @@ const HeroBanner = () => {
             <Button variant="outlined" color="error" size="medium">Learn More<ArrowDown /></Button>
         </div>
     </div>
-    <div className="w-full md:w-1/3 h-auto mt-4 md:mt-0">
+    <div ref={bannerRef} className="w-full md:w-1/3 h-auto mt-4 md:mt-0">
         <img src="https://i.postimg.cc/9fY8YJJX/Hero-Banner-1.png" alt="Shopzzila Banner" className="w-full h-auto" />
     </div>
 </div>

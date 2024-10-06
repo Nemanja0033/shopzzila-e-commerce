@@ -1,13 +1,28 @@
+import gsap from "gsap";
 import { ShoppingBag } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+
+  const navRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if(navRef.current){
+      gsap.from(navRef.current, {opacity: 0.5, y: 1000})
+      gsap.to(navRef.current, {opacity: 1, delay: 0.3})
+    }
+  })
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const closeNav = () => {
+    setIsOpen(false)
+  }
 
   return (
     <nav className="w-full bg-transparent h-16 flex lg:justify-evenly justify-between">
@@ -27,10 +42,10 @@ const Navbar = () => {
       </button>
 
       {isOpen && (
-        <div className="md:hidden flex flex-col items-center justify-evenly text-gray-600  text-4xl absolute h-full  z-10 top-16 left-0 right-0 bg-white">
-          <Link to="/" className="hover:text-primary">Home</Link>
-          <Link to="/products" className="hover:text-primary">Products</Link>
-          <Link to="/about" className="hover:text-primary">About</Link>
+        <div ref={navRef} className="md:hidden flex flex-col items-center justify-evenly text-gray-600  text-4xl absolute h-full  z-10 top-16 left-0 right-0 bg-white">
+          <Link onClick={closeNav} to="/" className="hover:text-primary">Home</Link>
+          <Link onClick={closeNav} to="/products" className="hover:text-primary">Products</Link>
+          <Link onClick={closeNav} to="/about" className="hover:text-primary">About</Link>
           <Link to='/cart'>Cart</Link>
         </div>
       )}

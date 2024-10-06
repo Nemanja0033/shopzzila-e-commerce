@@ -1,4 +1,3 @@
-
 import FeaturedProducts from './components/FeaturedProducts'
 import HeroBanner from './components/HeroBanner'
 
