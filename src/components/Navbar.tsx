@@ -7,6 +7,10 @@ const Navbar = () => {
 
   const navRef = useRef<HTMLDivElement | null>(null);
 
+  const handleLogoClick = () => {
+    window.location.href = '/'
+  }
+
   useEffect(() => {
     if(navRef.current){
       gsap.from(navRef.current, {opacity: 0.5, y: 1000})
@@ -25,8 +29,9 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full bg-transparent h-16 flex lg:justify-evenly justify-between">
-      <img src="public/logo.png" alt="shopzzila-logo" />
+    <nav className="w-full bg-white h-16 flex  lg:justify-evenly justify-between ">
+      
+      <img onClick={handleLogoClick} className="mb-2 cursor-pointer" src="public/logo.png" alt="shopzzila-logo" />
     
       <div className="hidden md:flex justify-around w-1/2 items-center text-gray-600 gap-4">
         <Link to="/" className="hover:text-primary">Home </Link>
