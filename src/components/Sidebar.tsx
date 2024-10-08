@@ -54,7 +54,7 @@ const Sidebar = () => {
 
     return (
         <div ref={sidebarRef} className="w-64 p-5 h-screen mt-10 ml-[80px] md:ml-0" style={{ opacity: 0 }}>
-            <h1 className="text-2xl text-primary font-semibold">SHOPZZILA STORE</h1>
+            <h1 className="text-2xl text-gray-700 font-semibold">SHOPZZILA STORE</h1>
 
             <section className="mt-5">
                 <input type="text" className="border-gray-400 border-2 rounded px-2 w-full sm:mb-0" placeholder="Search Product" />
