@@ -27,7 +27,8 @@ const HeroBanner = () => {
     <div ref={heroRef} className="w-full text-center mt-[150px]">
         <h1 className="text-gray-700 text-5xl  font-bold">Welcome To The Shopzzila</h1>
         <br />
-        <p className="text-gray-500 text-xl">Unleash unbeatable deals and exclusive treasures, all in one place. Shop smart, live better!</p>
+        <p className="text-gray-500 text-xl">Your One-Stop Shop for Everything You Desire</p>
+        <p className="text-gray-500 text-xl">Explore Endless Categories and Unbeatable Deals—Shop Now!</p>
         <br />
         <div className="gap-4 flex justify-center">
             <Button variant="contained" color="error" size="medium">Explore Products</Button>

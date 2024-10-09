@@ -41,3 +41,12 @@ export const FilterProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         </FilterContext.Provider>
     );
 };
+
+export const useFilter = () => {
+    const context = useContext(FilterContext);
+    if(context === undefined) {
+        throw new Error("Error with FilterContext");
+    }
+
+    return context;
+}

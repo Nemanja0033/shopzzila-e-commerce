@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
+import { useFilter } from "../pages/components/FilterContext";
 
 interface Product {
     category: string;
@@ -11,12 +12,26 @@ interface FetchResponse {
 }
 
 const Sidebar = () => {
+
+    const {
+        searchQuery,
+        setSearchQuery,
+        selectedCategory,
+        setSelectedCategory,
+        minPrice,
+        setMinPrice,
+        maxPrice,
+        setMaxPrice,
+        keyword,
+        setKeyword,
+    } = useFilter()
+
     const [categories, setCategories] = useState<string[]>([]);
     const [keywords] = useState<string[]>([
         "Fashion",
-        "Shoes",
+        "Smartphone",
         "watch",
-        "trend",
+        "Sport",
         "apple",
         "shirt",
     ]);
@@ -35,7 +50,7 @@ const Sidebar = () => {
                 const uniqueCategories = Array.from(
                     new Set(data.products.map(product => product.category))
                 );
-
+                console.log(data)
                 setCategories(uniqueCategories);
             } catch (error) {
                 console.log('Error while fetching data', error);
@@ -45,6 +60,32 @@ const Sidebar = () => {
         fetchCategories();
     }, []);
 
+    const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
+        const value = e.target.value;
+        setMinPrice(value ? parseFloat(value) : undefined)
+    };
+
+    const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value;
+        setMaxPrice(value ? parseFloat(value) : undefined)
+    };
+
+    const handleRadioChangeCategories = (category: string) => {
+        setSelectedCategory(category)
+    }
+
+    const handleKeywordChange = (keyword: string) => {
+        setKeyword(keyword);
+    }
+
+    const handleFilterReset = () => {
+        setSearchQuery("");
+        setSearchQuery("");
+        setMinPrice(undefined);
+        setMaxPrice(undefined);
+        setKeyword("");
+    }
+
     useEffect(() => {
         if (sidebarRef.current) { 
             gsap.from(sidebarRef.current, { opacity: 0, y: 1000 });
@@ -53,15 +94,30 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div ref={sidebarRef} className="w-64 p-5 h-screen mt-10 ml-[80px] md:ml-0" style={{ opacity: 0 }}>
+        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-10  md:ml-0" style={{ opacity: 0 }}>
             <h1 className="text-2xl text-gray-700 font-semibold">SHOPZZILA STORE</h1>
 
             <section className="mt-5">
-                <input type="text" className="border-gray-400 border-2 rounded px-2 w-full sm:mb-0" placeholder="Search Product" />
+                <input 
+                type="text" 
+                className="border-gray-400 border-2 rounded px-2 w-full sm:mb-0" 
+                placeholder="Search Product"
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)} />
 
                 <div className="flex justify-center items-center mt-3 gap-1">
-                    <input type="text" className="border-gray-400 border-2 px-5 py-3 mb-3 w-full" placeholder="Min" />
-                    <input type="text" className="border-gray-400 border-2 px-5 py-3 mb-3 w-full" placeholder="Max" />
+                    <input 
+                    type="text" 
+                    className="border-gray-400 border-2 px-5 py-3 mb-3 w-full" 
+                    placeholder="Min"
+                    value={minPrice ?? ''}
+                    onChange={handleMinPriceChange} />
+                    <input 
+                    type="text" 
+                    className="border-gray-400 border-2 px-5 py-3 mb-3 w-full" 
+                    placeholder="Max"
+                    value={maxPrice ?? ""}
+                    onChange={handleMaxPriceChange} />
                 </div>
 
                 <div className="mt-5">
@@ -71,8 +127,14 @@ const Sidebar = () => {
                 {categories.map((category, index) => (
                     <div key={index} className="flex-row ml-2">
                         <label>
-                            <input type="radio" name="category" value={category} className="mr-2 w-[16px] h-[16px]" />
-                            {category.toUpperCase()}
+                        <input 
+                        type="radio" 
+                        name="category" 
+                        value={category} 
+                        className="mr-2 w-[16px] h-[16px]"
+                        onChange={() => handleRadioChangeCategories(category)} // Corrected line
+                        checked={selectedCategory === category} 
+                    />  {category.toUpperCase()}
                         </label>
                     </div>
                 ))}
@@ -80,13 +142,13 @@ const Sidebar = () => {
                 <div className="mt-5">
                     <h2 className="text-xl text-gray-700 font-semibold mb-3">Keywords</h2>
                     {keywords.map((keyword, index) => (
-                        <button key={index} className="block mb-2 px-4 py-2 w-full text-left border rounded hover:bg-primary hover:text-white text-gray-700">
+                        <button key={index} onClick={() => handleKeywordChange(keyword)} className="block mb-2 px-4 py-2 w-full text-left border rounded hover:bg-primary hover:text-white text-gray-700">
                             {keyword.toUpperCase()}
                         </button>
                     ))}
                 </div>
 
-                <Button variant="contained" size="medium" fullWidth className='hover:bg-white hover:text-primary hover:border-2 border-gray-700' color="error">
+                <Button onClick={() => handleFilterReset()} variant="contained" size="medium" fullWidth className='hover:bg-white hover:text-primary hover:border-2 border-gray-700' color="error">
                     Reset Filters
                 </Button>
             </section>
