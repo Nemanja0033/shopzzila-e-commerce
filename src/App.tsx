@@ -4,6 +4,7 @@ import LandingPage from "./pages/LandingPage";
 import ProductsPage from "./pages/ProductsPage";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
+import ProductInfo from "./pages/components/ProductInfo";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/product/:id" element={<ProductInfo />} />
       </Routes>
     </Router>
   );
