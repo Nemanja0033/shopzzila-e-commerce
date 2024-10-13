@@ -81,6 +81,7 @@ const Sidebar = () => {
     const handleFilterReset = () => {
         setSearchQuery("");
         setSearchQuery("");
+        setSelectedCategory('');
         setMinPrice(undefined);
         setMaxPrice(undefined);
         setKeyword("");

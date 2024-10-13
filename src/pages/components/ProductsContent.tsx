@@ -10,8 +10,7 @@ const ProductsContent = () => {
 
     const [products, setProducts] = useState<any[]>([]);
     const [filter, setFilter] = useState('all');
-    const [currentPage, setCurrentPage] = useState(1);
-    const [dropdownOpen, setdropdownOpen] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);;
     const itemsPerPage = 12;
 
     useEffect(() => {
