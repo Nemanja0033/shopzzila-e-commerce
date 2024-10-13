@@ -24,8 +24,8 @@ const FeaturedProducts = () => {
         if (entry.isIntersecting) {
           gsap.fromTo(
             featuredProductsRef.current,
-            { opacity: 0, x: 100 },
-            { opacity: 1, x: 0, duration: 1 }
+            { opacity: 0, y: 200 },
+            { opacity: 1, y: 0, duration: 1 }
           );
           observer.unobserve(entry.target);
         }
@@ -44,13 +44,12 @@ const FeaturedProducts = () => {
   }, [featuredProductsRef]);
 
   return (
-    <div className='w-full flex-row bg-gray-50 mt-5'>
-      <div className="flex justify-start mt-5">
-        <h1 className="ml-20 text-primary text-2xl">FEATURED</h1>
-        <hr />
+    <div  ref={featuredProductsRef} className='w-full flex-row bg-gray-50 mt-5'>
+      <div className="flex md:justify-start justify-center ">
+        <h1 className="md:ml-20 ml-0 mt-3 text-primary text-2xl">FEATURED</h1>
       </div>
 
-      <div ref={featuredProductsRef} className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
         {products.map((product) => (
           <ProductCard key={product.id}
             id={product.id}
