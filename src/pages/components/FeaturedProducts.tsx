@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import ProductCard from "./ProductCard";
 import gsap from "gsap";
 import { Button } from "@mui/material";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const FeaturedProducts = () => {
