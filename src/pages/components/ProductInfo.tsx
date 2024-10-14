@@ -15,7 +15,6 @@ interface Product {
 
 const ProductInfo = () => {
     const { id } = useParams<{ id: string }>();
-    const navigate = useNavigate();
     const [product, setProducts] = useState<Product | null>(null);
 
     useEffect(() => {
@@ -41,7 +40,6 @@ const ProductInfo = () => {
 
     return (
         <>
-            <div className="mt-3 md:ml-[190px]"><Button variant="outlined" color="error" onClick={() => navigate(-1)}>Back <ArrowLeft /></Button></div>
             <div className="w-full md:flex flex-row justify-center">
                 <div className="md:w-1/2 w-full">
                     <img 
@@ -68,7 +66,7 @@ const ProductInfo = () => {
                         <hr />
                     </div>
 
-                    <div className="flex md:justify-between justify-center gap-4 mt-5">
+                    <div className="flex  justify-center gap-4 mt-5">
                         <span className="text-gray-700 text-2xl">{product.price}$</span>
                         <Button variant="outlined" color="error">ADD TO CART</Button>
                     </div>
