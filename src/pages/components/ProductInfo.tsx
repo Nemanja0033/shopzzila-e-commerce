@@ -1,8 +1,7 @@
 import Button from "@mui/material/Button";
 import axios from "axios";
-import { ArrowLeft } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface Product {
     id: number;

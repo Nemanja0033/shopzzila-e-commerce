@@ -1,15 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useFilter } from './FilterContext'
-import axios from 'axios';
-import ProductCard from './ProductCard';
-import gsap from 'gsap';
+import axios from 'axios'
+import ProductCard from './ProductCard'
+import gsap from 'gsap'
 
 const ProductsContent = () => {
 
     const {searchQuery, selectedCategory, maxPrice, minPrice, keyword} = useFilter()
 
     const [products, setProducts] = useState<any[]>([]);
-    const [filter, setFilter] = useState('all');
     const [currentPage, setCurrentPage] = useState(1);;
     const itemsPerPage = 12;
 
@@ -113,7 +112,7 @@ const ProductsContent = () => {
 
                 <div className='flex flex-wrap justify-center'>
                     {getPaginationButtons().map((page) => (
-                        <button onClick={() => handlePageChange(page)} className={`border px-4 py-2 mx-1 rounded-full ${page === currentPage ? 'bg-black text-white' : ""}`} key={Math.random()}>{page}</button>
+                        <button onClick={() => handlePageChange(page)} className={`border px-4 py-2 mx-1 rounded-full ${page === currentPage ? 'bg-primary text-white' : ""}`} key={Math.random()}>{page}</button>
                     ))}
                 </div>
 
