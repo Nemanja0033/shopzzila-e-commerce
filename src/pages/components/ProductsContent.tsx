@@ -94,7 +94,7 @@ const ProductsContent = () => {
   return (
     <div ref={productsRef} className='xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] p-5 mt-12'>
         <div className='flex justify-center mb-2'>
-            <h1 className='text-gray-700 font-semibold'>PRODUCTS</h1>
+            <h1 className='text-gray-700 font-semibold mb-3'>PRODUCTS</h1>
         </div>
         <div className='grid grid-cols-2 md:grid-cols-4 gap-5'>
             {filteredProducts.map(product => (
@@ -102,7 +102,8 @@ const ProductsContent = () => {
                             id={product.id} 
                             title={product.title} 
                             image={product.thumbnail} 
-                            price={product.price} />
+                            price={product.price}
+                             />
             ))}
         </div>
         <div className='flex justify-between items-center mt-5'>
