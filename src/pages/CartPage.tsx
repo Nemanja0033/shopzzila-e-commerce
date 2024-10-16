@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { XIcon } from "lucide-react";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react";
 
 type Products = {
   title: string,
@@ -24,22 +25,25 @@ const CartPage = () => {
 
   return (
     <div className="">
-      <h1 className="text-gray-700 text-center font-semibold">PRODUCTS</h1>
-      <div className="md:flex flex-row w-full mt-10 md:ml-10">
+      <h1 className="text-gray-700 text-center font-semibold">C A R T</h1>
+      <div className="md:flex flex-row w-full mt-5 md:justify-center">
       {cartProducts.length > 0 ? (
-        cartProducts.map((product, index) => (
+        cartProducts.map((product: { title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; image: string | undefined; price: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, index: Key | null | undefined) => (
           <div className="border-2 m-2" key={index}>
-            <h2>{product.title}</h2>
-            <img src={product.image} alt={product.title} />
-            <p>{product.price}$</p>
+            <h2 className="font-semibold text-gray-700 text-center mt-3">{product.title}</h2>
+            <img src={product.image} />
+            <p className="text-gray-700 font-bold ml-4">{product.price}$</p>
             <Button color="error">Remove Product</Button>
           </div>
         ))
       ) : (
-        <p>No Products Yet!</p>
+        <p className="text-gray-700 font-semibold text-4xl mt-20 ">No Products Yet!</p>
       )}
       </div>
-      <Button onClick={removeFromCart} variant="contained">Clear Cart</Button>
+      <div className="md:ml-[655px] ml-[150px] mt-5">
+       {cartProducts.length > 0 ?  <Button onClick={removeFromCart} variant="contained" color="error"><XIcon /></Button> 
+       : ''}
+      </div>
     </div>
   );
 };
