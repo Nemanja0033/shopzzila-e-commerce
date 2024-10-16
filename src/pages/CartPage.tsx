@@ -33,7 +33,7 @@ const CartPage = () => {
             <h2 className="font-semibold text-gray-700 text-center mt-3">{product.title}</h2>
             <img src={product.image} />
             <p className="text-gray-700 font-bold ml-4">{product.price}$</p>
-            <Button color="error">Remove Product</Button>
+            <Button color="error">Purhcase</Button>
           </div>
         ))
       ) : (
