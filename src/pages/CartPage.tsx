@@ -8,36 +8,40 @@ type Products = {
 }
 
 
-export function addToCart({title,image,price}: Products) {
-  localStorage.setItem('cartProduct', title); 
-  localStorage.setItem('image', image); 
-  localStorage.setItem('price', price); 
+export function addToCart({title, image, price}: Products) {
+  const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
+  existingCart.push({ title, image, price });
+  localStorage.setItem('cart', JSON.stringify(existingCart));
 }
 
 const CartPage = () => {
-  const [cartProduct, setCartProduct] = useState<string | null>(localStorage.getItem('cartProduct'));
-  const [image, setImage] = useState<string | null>(localStorage.getItem('image'));
-  const [price, setPrice] = useState<string | null>(localStorage.getItem('price'));
+  const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
 
   const removeFromCart = () => {
-    setCartProduct('');
-    setImage('');
-    setPrice('');
-    localStorage.removeItem('cartProduct')
-    localStorage.removeItem('image');
-    localStorage.removeItem('price');
-    }
+    localStorage.removeItem('cart');
+    setCartProducts([]);
+  };
 
   return (
-    <div>
-      <h1>Product: {cartProduct || 'Not Products Yet!'}</h1>
-      <img src={image} alt="" />
-      <p>{price}</p>
-      <Button onClick={removeFromCart} variant="contained">Remove From Cart</Button>
+    <div className="">
+      <h1 className="text-gray-700 text-center font-semibold">PRODUCTS</h1>
+      <div className="md:flex flex-row w-full mt-10 md:ml-10">
+      {cartProducts.length > 0 ? (
+        cartProducts.map((product, index) => (
+          <div className="border-2 m-2" key={index}>
+            <h2>{product.title}</h2>
+            <img src={product.image} alt={product.title} />
+            <p>{product.price}$</p>
+            <Button color="error">Remove Product</Button>
+          </div>
+        ))
+      ) : (
+        <p>No Products Yet!</p>
+      )}
+      </div>
+      <Button onClick={removeFromCart} variant="contained">Clear Cart</Button>
     </div>
   );
-}
+};
 
-
-
-export default CartPage
+export default CartPage;
