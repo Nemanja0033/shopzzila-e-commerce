@@ -18,7 +18,7 @@ const ProductCard: React.FC<ProductCardProps> = ({title, id, image, price}) => {
       <h2 className="font-bold text-gray-700">{title}</h2>
       <p>${price}</p>
       </Link>
-      <Button onClick={() => addToCart({title, image, price})}>Add To Cart</Button>
+      <Button color="error" onClick={() => addToCart({title, image, price})}>Add To Cart</Button>
     </div>
   )
 }

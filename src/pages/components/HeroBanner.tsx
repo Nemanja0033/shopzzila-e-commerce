@@ -2,6 +2,7 @@ import { Button } from "@mui/material"
 import { ArrowDown } from "lucide-react"
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 const HeroBanner = () => {
 
@@ -31,8 +32,8 @@ const HeroBanner = () => {
         <p className="text-gray-500 text-2xl">Explore Endless Categories and Unbeatable Deals—Shop Now!</p>
         <br />
         <div className="gap-4 flex justify-center">
-            <Button variant="contained" color="error" size="medium">Explore Products</Button>
-            <Button variant="outlined" color="error" size="medium">Learn More<ArrowDown /></Button>
+            <Button variant="contained" color="error" size="medium"><Link to='/products'>Explore Products</Link></Button>
+            <Button href="#featured" variant="outlined" color="error" size="medium">Learn More<ArrowDown /></Button>
         </div>
     </div>
     <div ref={bannerRef} className="w-full md:w-1/3 h-auto mt-4 md:mt-0">
