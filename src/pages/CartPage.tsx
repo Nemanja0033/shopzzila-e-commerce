@@ -27,7 +27,7 @@ const CartPage = () => {
   const totalSum = cartProducts.reduce((acc: number, product: { price: string; }) => acc + parseFloat(product.price), 0);
 
   return (
-    <div className="">
+    <div>
     <h1 className="text-gray-700 text-center font-semibold">C A R T</h1>
     <div className="md:flex flex-row w-full mt-5 md:justify-center">
       {cartProducts.length > 0 ? (
@@ -46,18 +46,24 @@ const CartPage = () => {
       )}
     </div>
   
-    {cartProducts.length > 0 ? 
+  <div className="mt-[100px] md:mt-0">
+    <hr />
+  {cartProducts.length > 0 ? 
     <div className="w-full flex justify-center">
       <div className='mt-3'>
-        <h1 className="text-gray-700 font-semibold text-center text-2xl">Order Summary</h1>
+        <h1 className="text-gray-700 font-semibold text-center text-4xl md:text-2xl">Order Summary</h1>
         <br />
-        <h3  className="text-start text-gray-700 font-semibold text-xl">Total {cartProducts.length} Items: ${totalSum.toFixed(2)}</h3>
+        <h3  className="text-start text-gray-700 font-semibold text-2xl md:text-xl mt-5 md:mt-0">Total ({cartProducts.length}) Items: ${totalSum.toFixed(2)}</h3>
         <br />
-        <Button variant="contained" color="error" size="large">Chechkout ${totalSum.toFixed(2)}</Button>
+       <div className="mt-5 md:mt-0 ml-5 md:ml-0">
+       <Button variant="contained" color="error" size="large">Chechkout ${totalSum.toFixed(2)}</Button>
+       </div>
       </div>
-    </div> : ''}
+    </div>   : ''}
+  </div>
   </div>
   );
 };
+
 
 export default CartPage;

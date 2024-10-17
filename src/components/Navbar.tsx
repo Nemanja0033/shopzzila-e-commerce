@@ -51,7 +51,7 @@ const Navbar = () => {
           <Link onClick={closeNav} to="/" className="hover:text-primary">Home</Link>
           <Link onClick={closeNav} to="/products" className="hover:text-primary">Products</Link>
           <Link onClick={closeNav} to="/about" className="hover:text-primary">About</Link>
-          <Link to='/cart'>Cart</Link>
+          <Link onClick={closeNav} to='/cart'>Cart</Link>
         </div>
       )}
     </nav>
