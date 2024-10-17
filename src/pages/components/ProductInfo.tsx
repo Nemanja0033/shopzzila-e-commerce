@@ -66,8 +66,8 @@ const ProductInfo = () => {
                     </div>
 
                     <div className="flex  justify-center gap-4 mt-5">
-                        <span className="text-gray-700 text-2xl">{product.price}$</span>
                         <Button variant="outlined" color="error">ADD TO CART</Button>
+                        <Button variant="contained" color="error">PURCHASE {product.price}$</Button>
                     </div>
                 </div>
             </div>
@@ -80,13 +80,13 @@ const ProductInfo = () => {
                             <img 
                                 src={product.images[1]} 
                                 alt={product.title} 
-                                className=" h-screen scale-75" 
+                                className=" h-screen scale-75 border-2" 
                             />
                             {product.images.length > 2 && (
                                 <img 
                                     src={product.images[2]} 
                                     alt={product.title} 
-                                    className=" h-screen scale-75" 
+                                    className=" h-screen scale-75 border-2" 
                                 />
                             )}
                         </>

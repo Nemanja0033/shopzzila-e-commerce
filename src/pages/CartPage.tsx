@@ -18,33 +18,45 @@ export function addToCart({title, image, price}: Products) {
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
 
-  const removeFromCart = () => {
-    localStorage.removeItem('cart');
-    setCartProducts([]);
+  const removeProduct = (index: Key | null | undefined) => {
+    const updatedCart = cartProducts.filter((_: any, i: Key | null | undefined) => i !== index);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+    setCartProducts(updatedCart);
   };
+
+  const totalSum = cartProducts.reduce((acc: number, product: { price: string; }) => acc + parseFloat(product.price), 0);
 
   return (
     <div className="">
-      <h1 className="text-gray-700 text-center font-semibold">C A R T</h1>
-      <div className="md:flex flex-row w-full mt-5 md:justify-center">
+    <h1 className="text-gray-700 text-center font-semibold">C A R T</h1>
+    <div className="md:flex flex-row w-full mt-5 md:justify-center">
       {cartProducts.length > 0 ? (
-        cartProducts.map((product: { title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; image: string | undefined; price: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, index: Key | null | undefined) => (
-          <div className="border-2 m-2" key={index}>
-            <h2 className="font-semibold text-gray-700 text-center mt-3">{product.title}</h2>
-            <img src={product.image} />
-            <p className="text-gray-700 font-bold ml-4">{product.price}$</p>
-            <Button color="error">Purhcase</Button>
-          </div>
-        ))
+        <div className="overflow-x-auto max-h-96 w-full flex flex-wrap justify-center">
+          {cartProducts.map((product: { title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; image: string | undefined; price: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, index: Key | null | undefined) => (
+            <div className="border-2 m-2" key={index}>
+              <Button onClick={() => removeProduct(index)} color="error"><XIcon /></Button>
+              <h2 className="font-semibold text-gray-700 text-center mt-3">{product.title}</h2>
+              <img src={product.image} />
+              <p className="text-gray-700 font-bold ml-4 text-center text-xl">${product.price}</p>
+            </div>
+          ))}
+        </div>
       ) : (
-        <p className="text-gray-700 font-semibold text-4xl mt-20 ">No Products Yet!</p>
+        <p className="text-gray-700 font-semibold text-4xl mt-20 text-center ">No Products Yet!</p>
       )}
-      </div>
-      <div className="md:ml-[655px] ml-[150px] mt-5">
-       {cartProducts.length > 0 ?  <Button onClick={removeFromCart} variant="contained" color="error"><XIcon /></Button> 
-       : ''}
-      </div>
     </div>
+  
+    {cartProducts.length > 0 ? 
+    <div className="w-full flex justify-center">
+      <div className='mt-3'>
+        <h1 className="text-gray-700 font-semibold text-center text-2xl">Order Summary</h1>
+        <br />
+        <h3  className="text-start text-gray-700 font-semibold text-xl">Total {cartProducts.length} Items: ${totalSum.toFixed(2)}</h3>
+        <br />
+        <Button variant="contained" color="error" size="large">Chechkout ${totalSum.toFixed(2)}</Button>
+      </div>
+    </div> : ''}
+  </div>
   );
 };
 

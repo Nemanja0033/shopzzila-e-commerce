@@ -71,6 +71,7 @@ const FeaturedProducts = () => {
         <Button variant="text" color="error">All Products <ArrowRight /></Button>
         </Link>
       </div>
+      <br />
     </div>
   );
 };
