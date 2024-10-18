@@ -1,51 +1,38 @@
-# React + TypeScript + Vite
+# Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shopzzila is an e-commerce web app that showcases my frontend skills. It features a responsive, first-design approach with a landing page, products page, cart page, and product filtering.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Technologies Used
 
-## Expanding the ESLint configuration
+- React.js
+- Node.js
+- TypeScript
+- Tailwind CSS
+- Material UI
+- GSAP
+- Axios
+- React Router
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+# Note
 
-- Configure the top-level `parserOptions` property like this:
+This project can be used as a reference for my frontend skills and experience. It demonstrates my ability to build responsive web applications using modern technologies and best practices. I am confident that the features and design of Shopzzila reflect my dedication to delivering high-quality user experiences.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+# Installation Instructions
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Nemanja0033/shopzzila-e-commerce.git
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-"# shopzzila-e-commerce" 
+2. Navigate to the project directory:
+    ```bash
+    cd shopzzila-e-commerce
+
+3. Install
+   ```bash
+   npm install
+
+4. Run the server 
+    ```bash
+    npm run dev
