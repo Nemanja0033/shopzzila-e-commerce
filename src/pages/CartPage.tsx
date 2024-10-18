@@ -1,13 +1,13 @@
 import Button from "@mui/material/Button";
 import { XIcon } from "lucide-react";
-import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useState } from "react";
+import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 type Products = {
   title: string,
   image: string,
   price: string 
 }
-
 
 export function addToCart({title, image, price}: Products) {
   const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
@@ -17,6 +17,15 @@ export function addToCart({title, image, price}: Products) {
 
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
+  const sidebarRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+   if(sidebarRef.current){
+    gsap.from(sidebarRef.current, {y:400, opacity: 0}); 
+    gsap.to(sidebarRef.current, {y:0, opacity: 1});
+   }
+  }, [])
+  
 
   const removeProduct = (index: Key | null | undefined) => {
     const updatedCart = cartProducts.filter((_: any, i: Key | null | undefined) => i !== index);
@@ -47,9 +56,8 @@ const CartPage = () => {
     </div>
   
   <div className="mt-[100px] md:mt-0">
-    <hr />
   {cartProducts.length > 0 ? 
-    <div className="w-full flex justify-center">
+    <div ref={sidebarRef} className="w-full flex justify-center bg-gray-50">
       <div className='mt-3'>
         <h1 className="text-gray-700 font-semibold text-center text-4xl md:text-2xl">Order Summary</h1>
         <br />
