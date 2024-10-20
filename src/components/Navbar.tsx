@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import ProductsCounter from "../pages/components/ProductCounter";
 
 const Navbar = () => {
 
@@ -37,7 +38,7 @@ const Navbar = () => {
         <Link to="/" className="hover:text-primary">Home </Link>
         <Link to="/products" className="hover:text-primary">Products </Link>
         <Link to="/about" className="hover:text-primary">About </Link>
-        <Link to='/cart'><ShoppingBag  className="text-gray-600 hover:text-primary"/></Link>
+        <Link className="flex" to='/cart'><ShoppingBag  className="text-gray-600 hover:text-primary"/><ProductsCounter /></Link>
       </div>
 
       <button onClick={toggleMenu} className="md:hidden flex flex-col justify-center items-center mx-5">

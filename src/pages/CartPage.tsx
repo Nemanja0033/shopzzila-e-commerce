@@ -13,11 +13,13 @@ export function addToCart({title, image, price}: Products) {
   const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
   existingCart.push({ title, image, price });
   localStorage.setItem('cart', JSON.stringify(existingCart));
+  window.location.reload();
 }
 
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
   const sidebarRef = useRef<HTMLDivElement | null>(null);
+
 
   useEffect(() => {
    if(sidebarRef.current){
@@ -25,12 +27,12 @@ const CartPage = () => {
     gsap.to(sidebarRef.current, {y:0, opacity: 1});
    }
   }, [])
-  
 
   const removeProduct = (index: Key | null | undefined) => {
     const updatedCart = cartProducts.filter((_: any, i: Key | null | undefined) => i !== index);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartProducts(updatedCart);
+    window.location.reload();
   };
 
   const totalSum = cartProducts.reduce((acc: number, product: { price: string; }) => acc + parseFloat(product.price), 0);

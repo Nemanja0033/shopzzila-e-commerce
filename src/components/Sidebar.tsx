@@ -133,7 +133,7 @@ const Sidebar = () => {
                         name="category" 
                         value={category} 
                         className="mr-2 w-[16px] h-[16px]"
-                        onChange={() => handleRadioChangeCategories(category)} // Corrected line
+                        onChange={() => handleRadioChangeCategories(category)}
                         checked={selectedCategory === category} 
                     />  {category.toUpperCase()}
                         </label>
