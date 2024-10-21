@@ -8,7 +8,6 @@ const ProductsCounter = () => {
       const products = JSON.parse(localStorage.getItem('cart') || '[]');
       setCartProducts(products);
     };
-
     updateCartProducts();
 
     window.addEventListener('storage', updateCartProducts);
@@ -21,10 +20,12 @@ const ProductsCounter = () => {
   return (
     <>
       {cartProducts.length > 0 ? (
-       <div className="w-[20px] h-[25px] roundend-xl bg-primary text-white text-center rounded-2xl"> <span>{cartProducts.length}</span></div>
+        <div className="w-[20px] h-[25px] rounded-xl bg-primary text-white text-center rounded-2xl">
+          <span>{cartProducts.length}</span>
+        </div>
       ) : null}
     </>
   );
-}
+};
 
 export default ProductsCounter;
