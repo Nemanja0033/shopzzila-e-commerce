@@ -47,7 +47,7 @@ const FeaturedProducts = () => {
   }, [featuredProductsRef]);
 
   return (
-    <div id='featured' ref={featuredProductsRef} className='w-full flex-row bg-gray-50 mt-5 mb-[200px]'>
+    <div id='featured' ref={featuredProductsRef} className='w-full flex-row bg-gray-50 mt-5 mb-[150px]'>
       <div className="flex md:justify-start justify-center">
         <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold">F E A T U R E D</h3>
       </div>

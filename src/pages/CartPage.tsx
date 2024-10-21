@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import { XIcon } from "lucide-react";
+import { Trash  } from "lucide-react";
 import { JSXElementConstructor, Key, ReactElement, ReactNode, ReactPortal, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
@@ -9,12 +9,15 @@ type Products = {
   price: string 
 }
 
-export function addToCart({title, image, price}: Products) {
+export function addToCart({ title, image, price }: Products) {
   const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
   existingCart.push({ title, image, price });
   localStorage.setItem('cart', JSON.stringify(existingCart));
-  window.location.reload();
+
+  // @ts-ignore
+  window.location.reload(false); // Suppressing the TypeScript error
 }
+
 
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
@@ -32,7 +35,9 @@ const CartPage = () => {
     const updatedCart = cartProducts.filter((_: any, i: Key | null | undefined) => i !== index);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     setCartProducts(updatedCart);
-    window.location.reload();
+
+    //@ts-ignore
+    window.location.reload(false);
   };
 
   const totalSum = cartProducts.reduce((acc: number, product: { price: string; }) => acc + parseFloat(product.price), 0);
@@ -45,7 +50,7 @@ const CartPage = () => {
         <div className="overflow-x-auto max-h-96 w-full flex flex-wrap justify-center">
           {cartProducts.map((product: { title: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | null | undefined; image: string | undefined; price: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined; }, index: Key | null | undefined) => (
             <div className="border-2 m-2" key={index}>
-              <Button onClick={() => removeProduct(index)} color="error"><XIcon /></Button>
+              <Button onClick={() => removeProduct(index)} color="error"><Trash /></Button>
               <h2 className="font-semibold text-gray-700 text-center mt-3">{product.title}</h2>
               <img src={product.image} />
               <p className="text-gray-700 font-bold ml-4 text-center text-xl">${product.price}</p>
