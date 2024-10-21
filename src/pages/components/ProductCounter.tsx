@@ -21,7 +21,7 @@ const ProductsCounter = () => {
   return (
     <>
       {cartProducts.length > 0 ? (
-        <span className="text-primary ml-2 text-center">{cartProducts.length}</span>
+       <div className="w-[20px] h-[25px] roundend-xl bg-primary text-white text-center rounded-2xl"> <span>{cartProducts.length}</span></div>
       ) : null}
     </>
   );
