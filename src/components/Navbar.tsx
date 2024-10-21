@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <nav className="w-full bg-white h-16 flex  lg:justify-evenly justify-between ">
       
-      <img onClick={handleLogoClick} className="mb-2 cursor-pointer" src="public/logo.png" alt="shopzzila-logo" />
+      <img onClick={handleLogoClick} className="mb-2 cursor-pointer" src="https://i.postimg.cc/zBcYzVPW/logo-1.png" alt="shopzzila-logo" />
     
       <div className="hidden md:flex justify-around w-1/2 items-center text-gray-600 gap-4">
         <Link to="/" className="hover:text-primary">Home </Link>
