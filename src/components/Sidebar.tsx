@@ -22,7 +22,6 @@ const Sidebar = () => {
         setMinPrice,
         maxPrice,
         setMaxPrice,
-        keyword,
         setKeyword,
     } = useFilter()
 
