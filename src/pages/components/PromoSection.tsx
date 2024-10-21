@@ -1,7 +1,6 @@
 import { Briefcase, Handshake, ShoppingCartIcon } from "lucide-react"
 import { useEffect, useRef } from "react"
 import gsap from "gsap";
-import { Button } from "@mui/material";
 
 const PromoSection = () => {
 
