@@ -35,8 +35,8 @@ const Customers = () => {
     return(
         <div ref={customersRef} className="mt-[150px]">
         <h3 className="text-primary font-semibold text-xl md:ml-11 ml-0 md:text-start text-center">C U S T O M E R S </h3>
-        <h3 className="text-gray-700 font-semibold text-3xl md:ml-11 ml-0 mt-3 md:text-start text-center md:mb- mb-20">Customers says</h3>
-        <div className=" flex-row md:flex justify-evenly ml-20 md:ml-0">
+        <h3 className="text-gray-700 font-semibold text-3xl md:ml-11 ml-0 mt-3 md:text-start text-center md:mb- mb-10">Customers says</h3>
+        <div className=" flex-row md:flex justify-evenly ml-3 mr-3 md:ml-0 border-2">
             <div className="flex-row mt-6">
                 <h3 className="text-gray-700 text-2xl mb-3 flex"><span><img className="w-[50px] mr-3 h-[50px]" src={customer1.avatar} alt="" /></span>{customer1.name}</h3>
                 <p className="text-gray-500">{customer1.comment}</p>

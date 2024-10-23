@@ -30,7 +30,7 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="w-full bg-white h-16 flex  lg:justify-evenly justify-between ">
+    <nav className="w-full bg-white h-16 flex  lg:justify-evenly justify-between">
       
       <img onClick={handleLogoClick} className="mb-2 cursor-pointer" src="https://i.postimg.cc/zBcYzVPW/logo-1.png" alt="shopzzila-logo" />
     
@@ -48,7 +48,7 @@ const Navbar = () => {
       </button>
 
       {isOpen && (
-        <div ref={navRef} className="md:hidden flex flex-col items-center justify-evenly text-gray-600  text-4xl absolute h-full  z-10 top-16 left-0 right-0 bg-white">
+        <div ref={navRef} className="md:hidden flex flex-col items-center justify-evenly text-gray-600 text-4xl absolute h-full  z-10 top-16 left-0 right-0 bg-white">
           <Link onClick={closeNav} to="/" className="hover:text-primary">Home</Link>
           <Link onClick={closeNav} to="/products" className="hover:text-primary">Products</Link>
           <Link onClick={closeNav} to="/about" className="hover:text-primary">About</Link>
