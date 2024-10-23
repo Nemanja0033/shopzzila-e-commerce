@@ -91,7 +91,7 @@ const FeaturedProducts = () => {
         ))}
       </div>
 
-      <div className="flex md:justify-start justify-center mt-3">
+      <div className="flex md:justify-start justify-center mt-20 md:mt-3">
         <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Women's corner</h1>
       </div>
 
@@ -106,7 +106,7 @@ const FeaturedProducts = () => {
       </div>
 
       
-      <div className="flex md:justify-start justify-center mt-3">
+      <div className="flex md:justify-start justify-center  mt-20 md:mt-3">
         <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Free Shiping On Smartphones</h1>
       </div>
 
