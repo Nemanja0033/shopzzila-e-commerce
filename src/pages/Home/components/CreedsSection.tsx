@@ -1,8 +1,8 @@
-import { Briefcase, Handshake, ShoppingCartIcon } from "lucide-react"
 import { useEffect, useRef } from "react"
 import gsap from "gsap";
+import { creed1, creed2, creed3 } from "../../../utils/creeds";
 
-const PromoSection = () => {
+const CreedsSection = () => {
 
     const promoRef = useRef<HTMLDivElement | null>(null);
 
@@ -38,29 +38,29 @@ const PromoSection = () => {
         <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl mt-3 text-center md:text-start">What We Stand For</h1>
           <div className="w-full md:flex flex-row justify-center mt-10">
             <div className="w-full flex-row mt-20 md:mt-0">
-                <h1 className=" ml-11 text-gray-700 font-semibold text-3xl mt-3  text-center">Customer Commitment</h1>
+                <h1 className=" ml-11 text-gray-700 font-semibold text-3xl mt-3  text-center">{creed1.title}</h1>
                 <div className="flex justify-center mt-3 mb-3">
-                    <ShoppingCartIcon color="red" />
+                    {creed1.icon}
                 </div>
-                <p className="text-gray-500 text-center">At Shopzzila, we are dedicated to providing an exceptional shopping experience. Your satisfaction is our top priority, and we strive to exceed your expectations every step of the way.</p>
+                <p className="text-gray-500 text-center">{creed1.text}</p>
             </div>
             <div className="w-full flex-row mt-20 md:mt-0">
-                <h1 className=" ml-11 text-gray-700 font-semibold text-3xl mt-3 text-center">Quality Assurance</h1>
+                <h1 className=" ml-11 text-gray-700 font-semibold text-3xl mt-3 text-center">{creed2.title}</h1>
                 <div className="flex justify-center mt-3 mb-3">
-                <Briefcase color="red" />
+                {creed2.icon}
                 </div>
-                <p className="text-gray-500 text-center">We believe in offering only the best. Every product in our store is carefully curated to ensure quality, reliability, and value for our customers.</p>
+                <p className="text-gray-500 text-center">{creed2.text}</p>
             </div>
             <div className="w-full flex-row mt-20 md:mt-0">
-                <h1 className=" ml-11 text-gray-700 font-semibold text-3xl mt-3  text-center">Community Focus</h1>
+                <h1 className=" ml-11 text-gray-700 font-semibold text-3xl mt-3  text-center">{creed3.title}</h1>
                 <div className="flex justify-center mt-3 mb-3">
-                <Handshake color='red' />
+                {creed3.icon}
                 </div>
-                <p className="text-gray-500 text-center">We are more than just a shopping platform; we are a community. We support local businesses and artisans, bringing you unique finds while fostering a vibrant marketplace</p>
+                <p className="text-gray-500 text-center">{creed3.text}</p>
             </div>
         </div>
         </div>
     )
 }
 
-export default PromoSection
+export default CreedsSection
