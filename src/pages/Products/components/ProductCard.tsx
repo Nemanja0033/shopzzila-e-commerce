@@ -1,6 +1,6 @@
 import { Button } from "@mui/material"
 import { Link } from "react-router-dom"
-import { addToCart } from "../CartPage"
+import { addToCart } from "../../Cart/CartPage"
 interface ProductCardProps {
     id: string,
     title: string,

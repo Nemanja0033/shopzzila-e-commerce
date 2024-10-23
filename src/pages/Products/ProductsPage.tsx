@@ -1,6 +1,6 @@
-import Sidebar from "../components/Sidebar"
-import { FilterProvider } from "./components/FilterContext"
-import ProductsContent from "./components/ProductsContent"
+import Sidebar from "../../components/Sidebar"
+import { FilterProvider } from "../../context/FilterContext"
+import ProductsContent from "../../context/ProductsContent"
 
 const ProductsPage = () => {
   return (

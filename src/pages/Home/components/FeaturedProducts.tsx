@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import ProductCard from "./ProductCard";
+import ProductCard from "../../Products/components/ProductCard";
 import gsap from "gsap";
 import { Button } from "@mui/material";
 import { ArrowRight } from "lucide-react";

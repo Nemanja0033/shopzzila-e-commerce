@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useFilter } from './FilterContext'
 import axios from 'axios'
-import ProductCard from './ProductCard'
+import ProductCard from '../pages/Products/components/ProductCard'
 import gsap from 'gsap'
 
 const ProductsContent = () => {

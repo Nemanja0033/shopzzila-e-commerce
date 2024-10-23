@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useEffect, useState, useRef } from "react";
 import gsap from "gsap";
-import { useFilter } from "../pages/components/FilterContext";
+import { useFilter } from "../context/FilterContext";
 
 interface Product {
     category: string;

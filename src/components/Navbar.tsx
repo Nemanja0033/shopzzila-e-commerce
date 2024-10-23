@@ -2,7 +2,7 @@ import gsap from "gsap";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import ProductsCounter from "../pages/components/ProductCounter";
+import ProductsCounter from "../pages/Cart/components/ProductCounter";
 
 const Navbar = () => {
 
