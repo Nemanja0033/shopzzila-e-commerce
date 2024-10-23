@@ -57,7 +57,7 @@ const FeaturedProducts = () => {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.5 }); 
+    }, { threshold: 0 }); 
 
     if (featuredProductsRef.current) {
       observer.observe(featuredProductsRef.current);
@@ -125,6 +125,7 @@ const FeaturedProducts = () => {
         </Link>
       </div>
       <br />
+      <hr />
     </div>
   );
 };
