@@ -31,7 +31,6 @@ const CartPage = () => {
     const updatedCart = cartProducts.filter((_: any, i: number | null | undefined) => i !== index);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
     
-    // Trigger a storage event manually
     window.dispatchEvent(new Event('storage'));
     
     setCartProducts(updatedCart);
