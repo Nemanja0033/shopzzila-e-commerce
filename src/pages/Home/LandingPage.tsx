@@ -1,6 +1,6 @@
 import FeaturedProducts from './components/FeaturedProducts'
 import HeroBanner from './components/HeroBanner'
-import Customers from './components/Newsletter'
+import Customers from './components/Customers'
 import PromoSection from './components/PromoSection'
 
 const LandingPage = () => {
