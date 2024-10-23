@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 const FeaturedProducts = () => {
   const featuredProductsRef = useRef<HTMLDivElement | null>(null);
   const [products, setProducts] = useState<any[]>([]);
+  const [product2, setProducts2] = useState<any[]>([]);
+  const [product3, setProducts3] = useState<any[]>([]);
 
   useEffect(() => {
     const url = 'https://dummyjson.com/products/category/home-decoration';
@@ -20,6 +22,28 @@ const FeaturedProducts = () => {
         console.error("Error fetching products:", error);
       });
   }, []);
+
+  useEffect(() => {
+    const url = 'https://dummyjson.com/products/category/beauty';
+    axios.get(url)
+    .then(response => {
+      setProducts2(response.data.products);
+    })
+    .catch(error => {
+      console.error('Error fetching trending products', error)
+    })
+  }, [])
+
+  useEffect(() => {
+    const url = 'https://dummyjson.com/products/category/smartphones?limit=5';
+    axios.get(url)
+    .then(response => {
+      setProducts3(response.data.products)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -47,7 +71,7 @@ const FeaturedProducts = () => {
   }, [featuredProductsRef]);
 
   return (
-    <div id='featured' ref={featuredProductsRef} className='w-full flex-row bg-gray-50 mt-5 mb-[150px]'>
+    <div id='featured' ref={featuredProductsRef} className='w-full flex-row bg-white mt-5 mb-[1y0px]'>
       <div className="flex md:justify-start justify-center">
         <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold">F E A T U R E D</h3>
       </div>
@@ -64,6 +88,35 @@ const FeaturedProducts = () => {
             title={product.title}
             image={product.thumbnail}
             price={product.price} />
+        ))}
+      </div>
+
+      <div className="flex md:justify-start justify-center mt-3">
+        <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Women's corner</h1>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
+        {product2.map((product2) => (
+          <ProductCard key={product2.id}
+            id={product2.id}
+            title={product2.title}
+            image={product2.thumbnail}
+            price={product2.price} />
+        ))}
+      </div>
+
+      
+      <div className="flex md:justify-start justify-center mt-3">
+        <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Free Shiping On Smartphones</h1>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
+        {product3.map((product3) => (
+          <ProductCard key={product3.id}
+            id={product3.id}
+            title={product3.title}
+            image={product3.thumbnail}
+            price={product3.price} />
         ))}
       </div>
       <div className="flex justify-center mt-3">
