@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../Cart/CartPage";
+import { ArrowLeft, Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 
 interface Product {
     id: number;
@@ -11,6 +12,11 @@ interface Product {
     price: number;
     rating: number;
     images: string[];
+    returnPolicy: string,
+    shippingInformation: string,
+    warrantyInformation: string,
+    availabilityStatus: string,
+    discountPercentage: number
 }
 
 const ProductInfo = () => {
@@ -46,6 +52,7 @@ const ProductInfo = () => {
 
     return (
         <>
+        <Button color="error" onClick={() => window.history.go(-1)}><ArrowLeft /></Button>
             <div className="w-full md:flex flex-row justify-center">
                 <div className="md:w-1/2 w-full">
                     <img 
@@ -55,17 +62,24 @@ const ProductInfo = () => {
                     />
                 </div>
                 
-                <div className="md:w-1/3 w-full md:mt-[200px] flex-col">
+                <div className="md:w-1/2 w-full md:mt-[200px] flex-col">
                     <div className="flex justify-center">
-                        <span className="text-gray-700 font-semibold text-5xl text-center">{product.title}</span>
+                        <span className="text-gray-700 font-semibold text-5xl text-center">{product.title}(-{Math.round(product.discountPercentage)}%)</span>
                     </div>
                     
                     <div className="mt-5 flex justify-center">
-                        <span className="text-gray-700 text-xl">Rating: {product.rating}</span>
+                        <span className="text-gray-700 text-xl flex"><StarIcon /> {product.rating}</span>
                     </div>
 
                     <div className="mt-5 flex justify-center">
-                        <p className="text-gray-400 text-center">{product.description}</p>
+                        <p className="text-gray-400 text-center text-xl">{product.description}</p>
+                    </div>
+
+                    <div className="mt-6 flex justify-center text-primary gap-2">
+                        <span className="flex gap-2"><Truck />{product.shippingInformation}</span>
+                        <span className="flex gap-2"><Handshake />{product.returnPolicy}</span>
+                        <span className="flex gap-2"><Recycle />{product.warrantyInformation}</span>
+                        <span className="flex gap-2"><Layers />{product.availabilityStatus}</span>
                     </div>
 
                     <div className="mt-3">
