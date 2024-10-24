@@ -34,7 +34,7 @@ const ProductInfo = () => {
     const { id } = useParams<{ id: string }>();
     const [product, setProducts] = useState<Product | null>(null);
     const [showInfo, setShowinfo] = useState(false);
-    const [similarProducts, setSimilarProducts] = useState<SimilarProduct[]>([]); // Initialize as an empty array
+    const [similarProducts, setSimilarProducts] = useState<SimilarProduct[]>([]); 
 
     const infoRef = useRef<HTMLDivElement | null>(null);
 
@@ -80,10 +80,10 @@ const ProductInfo = () => {
 
     useEffect(() => {
         const fetchSimilarProducts = async () => {
-            if (!category) return; // Ensure category is defined before fetching
+            if (!category) return; 
             try {
                 const response = await axios.get<{ products: SimilarProduct[] }>(`https://dummyjson.com/products/category/${category}`);
-                setSimilarProducts(response.data.products); // Assuming response structure
+                setSimilarProducts(response.data.products); 
             } catch (error) {
                 console.error('Error while fetching similar products', error);
             }
