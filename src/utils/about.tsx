@@ -4,7 +4,7 @@ export const aboutSections = [
         content: "Welcome to Shopzzila!"
     },
     {
-        title: "Our Mission",
+        title: "About Project",
         content: "We are dedicated to providing high-quality products at affordable prices."
     },
     {

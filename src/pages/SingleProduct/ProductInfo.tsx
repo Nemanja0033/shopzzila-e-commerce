@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { addToCart } from "../Cart/CartPage";
 
 interface Product {
     id: number;
@@ -37,6 +38,12 @@ const ProductInfo = () => {
         );
     }
 
+    const productsParams = {
+        title: product.title,
+        image: product.images[0],
+        price: product.price.toString(), 
+    };
+
     return (
         <>
             <div className="w-full md:flex flex-row justify-center">
@@ -65,8 +72,14 @@ const ProductInfo = () => {
                         <hr />
                     </div>
 
-                    <div className="flex  justify-center gap-4 mt-5">
-                        <Button variant="outlined" color="error">ADD TO CART</Button>
+                    <div className="flex justify-center gap-4 mt-5">
+                        <Button 
+                            variant="outlined" 
+                            color="error" 
+                            onClick={() => addToCart(productsParams)}
+                        >
+                            ADD TO CART
+                        </Button>
                         <Button variant="contained" color="error">PURCHASE {product.price}$</Button>
                     </div>
                 </div>
@@ -80,13 +93,13 @@ const ProductInfo = () => {
                             <img 
                                 src={product.images[1]} 
                                 alt={product.title} 
-                                className=" h-screen scale-75 border-2" 
+                                className="h-screen scale-75 border-2" 
                             />
                             {product.images.length > 2 && (
                                 <img 
                                     src={product.images[2]} 
                                     alt={product.title} 
-                                    className=" h-screen scale-75 border-2" 
+                                    className="h-screen scale-75 border-2" 
                                 />
                             )}
                         </>
