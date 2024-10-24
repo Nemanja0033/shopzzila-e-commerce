@@ -32,7 +32,7 @@ const CreedsSection = () => {
       }, [promoRef]);
 
     return(
-        <div ref={promoRef} className="bg-white">
+        <div ref={promoRef} className="bg-white shadow-md">
         <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold text-center md:text-start">C R E E D</h3>
         <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl mt-3 mb-12 text-center md:text-start">What We Stand For</h1>
         <hr />

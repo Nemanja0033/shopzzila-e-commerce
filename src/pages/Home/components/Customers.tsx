@@ -33,7 +33,7 @@ const Customers = () => {
     
 
     return(
-        <div ref={customersRef} className="mt-[150px]">
+        <div ref={customersRef} className="mt-[150px] shadow-md">
         <h3 className="text-primary font-semibold text-xl md:ml-11 ml-0 md:text-start text-center">C U S T O M E R S </h3>
         <h3 className="text-gray-700 font-semibold text-3xl md:ml-11 ml-0 mt-3 md:text-start text-center md:mb- mb-10">Customers says</h3>
         <hr />

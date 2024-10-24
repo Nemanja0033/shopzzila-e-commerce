@@ -94,7 +94,7 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-10  md:ml-0" style={{ opacity: 0 }}>
+        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-10 shadow-md md:ml-0" style={{ opacity: 0 }}>
             <h1 className="text-2xl text-gray-700 font-semibold">SHOPZZILA STORE</h1>
 
             <section className="mt-5">
