@@ -36,7 +36,7 @@ const CreedsSection = () => {
           <br />
         <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold text-center md:text-start">C R E E D</h3>
         <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl mt-3 text-center md:text-start">What We Stand For</h1>
-          <div className="w-full md:flex flex-row justify-center mt-10 border-2">
+          <div className="md:flex justify-center flex-row mt-10 border-2 w-full">
             <br />
             <div className="w-full flex-row mt-20 md:mt-0">
                 <h1 className=" ml-11 text-gray-700 font-semibold text-3xl mt-3  text-center">{creed1.title}</h1>
