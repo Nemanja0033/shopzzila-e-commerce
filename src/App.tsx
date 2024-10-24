@@ -5,7 +5,6 @@ import ProductsPage from "./pages/Products/ProductsPage";
 import AboutPage from "./pages/About/AboutPage";
 import CartPage from "./pages/Cart/CartPage";
 import ProductInfo from "./pages/SingleProduct/ProductInfo";
-import Footer from "./components/Footer";
 
 const App = () => {
   return (
