@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import { Trash } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import BackButton from "../../components/BackButton";
 
 type Products = {
   title: string,
@@ -40,6 +41,7 @@ const CartPage = () => {
 
   return (
     <div>
+      <BackButton />
       <h1 className="text-gray-700 text-center font-semibold">C A R T</h1>
       <div className="md:flex flex-row w-full mt-5 md:justify-center">
         {cartProducts.length > 0 ? (

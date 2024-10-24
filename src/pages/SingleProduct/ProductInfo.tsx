@@ -81,7 +81,7 @@ const ProductInfo = () => {
 
     return (
         <>
-        <Button color="error" onClick={() => window.history.go(-1)}><ArrowLeft /></Button>
+         <Button color="error" onClick={() => window.history.go(-1)}><ArrowLeft /></Button>
             <div className="w-full md:flex flex-row justify-center">
                 <div className="md:w-1/2 w-full">
                     <img 
