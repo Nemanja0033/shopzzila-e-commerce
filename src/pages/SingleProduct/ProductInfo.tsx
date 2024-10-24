@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { addToCart } from "../Cart/CartPage";
 import { ArrowLeft, Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import gsap from "gsap";
+import ProductCard from "../Products/components/ProductCard";
 
 interface Product {
     id: number;
@@ -13,44 +14,54 @@ interface Product {
     price: number;
     rating: number;
     images: string[];
-    returnPolicy: string,
-    shippingInformation: string,
-    warrantyInformation: string,
-    availabilityStatus: string,
-    discountPercentage: number
+    returnPolicy: string;
+    shippingInformation: string;
+    warrantyInformation: string;
+    availabilityStatus: string;
+    discountPercentage: number;
+    category: string;
+}
+
+interface SimilarProduct {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    thumbnail: string;
 }
 
 const ProductInfo = () => {
     const { id } = useParams<{ id: string }>();
     const [product, setProducts] = useState<Product | null>(null);
     const [showInfo, setShowinfo] = useState(false);
+    const [similarProducts, setSimilarProducts] = useState<SimilarProduct[]>([]); // Initialize as an empty array
 
     const infoRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              gsap.fromTo(
-                infoRef.current,
-                { opacity: 0, x: 20 },
-                { opacity: 1, x: 0, duration: 0.5 }
-              );
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0 }); 
-    
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gsap.fromTo(
+                        infoRef.current,
+                        { opacity: 0, x: 20 },
+                        { opacity: 1, x: 0, duration: 0.5 }
+                    );
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0 });
+
         if (infoRef.current) {
-          observer.observe(infoRef.current);
+            observer.observe(infoRef.current);
         }
-    
+
         return () => {
-          if (infoRef.current) {
-            observer.unobserve(infoRef.current);
-          }
+            if (infoRef.current) {
+                observer.unobserve(infoRef.current);
+            }
         };
-      }, [showInfo]);
+    }, [showInfo]);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -58,12 +69,28 @@ const ProductInfo = () => {
                 const response = await axios.get<Product>(`https://dummyjson.com/products/${id}`);
                 setProducts(response.data);
             } catch (error) {
-                console.error('Error while fetching data', error);
+                console.error('Error while fetching product data', error);
             }
         };
 
         fetchProduct();
     }, [id]);
+
+    const category = product?.category;
+
+    useEffect(() => {
+        const fetchSimilarProducts = async () => {
+            if (!category) return; // Ensure category is defined before fetching
+            try {
+                const response = await axios.get<{ products: SimilarProduct[] }>(`https://dummyjson.com/products/category/${category}`);
+                setSimilarProducts(response.data.products); // Assuming response structure
+            } catch (error) {
+                console.error('Error while fetching similar products', error);
+            }
+        };
+
+        fetchSimilarProducts();
+    }, [category]);
 
     if (!product) {
         return (
@@ -76,26 +103,26 @@ const ProductInfo = () => {
     const productsParams = {
         title: product.title,
         image: product.images[0],
-        price: product.price.toString(), 
+        price: product.price.toString(),
     };
 
     return (
         <>
-         <Button color="error" onClick={() => window.history.go(-1)}><ArrowLeft /></Button>
+            <Button color="error" onClick={() => window.history.go(-1)}><ArrowLeft /></Button>
             <div className="w-full md:flex flex-row justify-center">
                 <div className="md:w-1/2 w-full">
-                    <img 
-                        src={product.images[0]} 
-                        alt={product.title} 
-                        className="border-2 h-screen scale-75" 
+                    <img
+                        src={product.images[0]}
+                        alt={product.title}
+                        className="border-2 h-screen scale-75"
                     />
                 </div>
-                
+
                 <div className="md:w-1/2 w-full md:mt-[200px] flex-col">
                     <div className="flex justify-center">
-                        <span className="text-gray-700 font-semibold text-5xl text-center">{product.title}(-{Math.round(product.discountPercentage)}%)</span>
+                        <span className="text-gray-700 font-semibold text-5xl text-center">{product.title}</span>
                     </div>
-                    
+
                     <div className="mt-5 flex justify-center">
                         <span className="text-gray-700 text-xl flex"><StarIcon /> {product.rating}</span>
                     </div>
@@ -123,15 +150,29 @@ const ProductInfo = () => {
                     </div>
 
                     <div className="flex justify-center gap-4 mt-5">
-                        <Button 
-                            variant="outlined" 
-                            color="error" 
+                        <Button
+                            variant="outlined"
+                            color="error"
                             onClick={() => addToCart(productsParams)}
                         >
                             ADD TO CART
                         </Button>
-                        <Button variant="contained" color="error">PURCHASE {product.price}$</Button>
+                        <Button variant="contained" color="error">PURCHASE {product.price}$ (-{Math.round(product.discountPercentage)}%)</Button>
                     </div>
+                </div>
+            </div>
+
+            <div className="w-full">
+            <h3 className="md:ml-11 ml-0 mt-3  mb-3 text-primary font-semibold">S I M I L A R</h3>
+            <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Explore more {product.category} products</h1>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
+                    {similarProducts.map((similarProduct) => (
+                        <ProductCard key={similarProduct.id}
+                            id={similarProduct.id.toString()}
+                            title={similarProduct.title}
+                            image={similarProduct.thumbnail}
+                            price={similarProduct.price.toString()} />
+                    ))}
                 </div>
             </div>
 
@@ -140,16 +181,16 @@ const ProductInfo = () => {
                 <div className="md:flex justify-center flex-row">
                     {product.images.length > 1 ? (
                         <>
-                            <img 
-                                src={product.images[1]} 
-                                alt={product.title} 
-                                className="h-screen scale-75 border-2" 
+                            <img
+                                src={product.images[1]}
+                                alt={product.title}
+                                className="h-screen scale-75 border-2"
                             />
                             {product.images.length > 2 && (
-                                <img 
-                                    src={product.images[2]} 
-                                    alt={product.title} 
-                                    className="h-screen scale-75 border-2" 
+                                <img
+                                    src={product.images[2]}
+                                    alt={product.title}
+                                    className="h-screen scale-75 border-2"
                                 />
                             )}
                         </>
