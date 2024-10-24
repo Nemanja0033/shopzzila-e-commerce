@@ -47,7 +47,7 @@ const CartPage = () => {
         {cartProducts.length > 0 ? (
           <div className="overflow-x-auto max-h-96 w-full flex flex-wrap justify-center">
             {cartProducts.map((product: { title: string; image: string; price: string; }, index: number | null | undefined) => (
-              <div className="border-2 m-2 w-1/5" key={index}>
+              <div className="border-2 m-2 md:w-1/5 w-1/2" key={index}>
                 <Button onClick={() => removeProduct(index)} color="error"><Trash /></Button>
                 <h2 className="font-semibold text-gray-700 text-center mt-3">{product.title}</h2>
                 <img src={product.image} alt={product.title} />

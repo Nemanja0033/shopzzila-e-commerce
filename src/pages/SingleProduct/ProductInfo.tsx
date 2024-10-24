@@ -162,9 +162,9 @@ const ProductInfo = () => {
                 </div>
             </div>
 
-            <div className="w-full">
-            <h3 className="md:ml-11 ml-0 mt-3  mb-3 text-primary font-semibold">S I M I L A R</h3>
-            <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Explore more {product.category} products</h1>
+            <div className="w-full mt-32 md:mt-3">
+            <h3 className="md:ml-11 ml-0 mt-3 text-center md:text-start  mb-3 text-primary font-semibold">S I M I L A R</h3>
+            <h1 className="text-gray-700 md:ml-11 text-center md:text-start font-semibold md:text-3xl text-xl">Explore more {product.category} products</h1>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
                     {similarProducts.map((similarProduct) => (
                         <ProductCard key={similarProduct.id}
