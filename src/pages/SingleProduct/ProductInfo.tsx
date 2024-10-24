@@ -1,9 +1,10 @@
 import Button from "@mui/material/Button";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../Cart/CartPage";
 import { ArrowLeft, Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
+import gsap from "gsap";
 
 interface Product {
     id: number;
@@ -22,6 +23,34 @@ interface Product {
 const ProductInfo = () => {
     const { id } = useParams<{ id: string }>();
     const [product, setProducts] = useState<Product | null>(null);
+    const [showInfo, setShowinfo] = useState(false);
+
+    const infoRef = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              gsap.fromTo(
+                infoRef.current,
+                { opacity: 0, x: 20 },
+                { opacity: 1, x: 0, duration: 0.5 }
+              );
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0 }); 
+    
+        if (infoRef.current) {
+          observer.observe(infoRef.current);
+        }
+    
+        return () => {
+          if (infoRef.current) {
+            observer.unobserve(infoRef.current);
+          }
+        };
+      }, [showInfo]);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -75,11 +104,18 @@ const ProductInfo = () => {
                         <p className="text-gray-400 text-center text-xl">{product.description}</p>
                     </div>
 
-                    <div className="mt-6 flex justify-center text-primary gap-2">
-                        <span className="flex gap-2"><Truck />{product.shippingInformation}</span>
-                        <span className="flex gap-2"><Handshake />{product.returnPolicy}</span>
-                        <span className="flex gap-2"><Recycle />{product.warrantyInformation}</span>
-                        <span className="flex gap-2"><Layers />{product.availabilityStatus}</span>
+                    <div className="mt-3 flex justify-center text-primary gap-2">
+                        {showInfo ? (
+                            <span ref={infoRef} className="md:flex flex-row gap-2">
+                                <span className="flex gap-2 mt-3"><Truck />{product.shippingInformation}</span>
+                                <span className="flex gap-2 mt-3"><Handshake />{product.returnPolicy}</span>
+                                <span className="flex gap-2 mt-3"><Recycle />{product.warrantyInformation}</span>
+                                <span className="flex gap-2 mt-3 mb-3"><Layers />{product.availabilityStatus}</span>
+                                <Button onClick={() => setShowinfo(false)} color="error">Show Less</Button>
+                            </span>
+                        ) : (
+                            <Button onClick={() => setShowinfo(true)} color="error">Additional Informations</Button>
+                        )}
                     </div>
 
                     <div className="mt-3">
