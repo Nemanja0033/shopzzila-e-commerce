@@ -6,6 +6,7 @@ import { addToCart } from "../Cart/CartPage";
 import { ArrowLeft, Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import gsap from "gsap";
 import ProductCard from "../Products/components/ProductCard";
+import BackButton from "../../components/BackButton";
 
 interface Product {
     id: number;
@@ -108,7 +109,7 @@ const ProductInfo = () => {
 
     return (
         <>
-            <Button color="error" onClick={() => window.history.go(-1)}><ArrowLeft /></Button>
+        <BackButton />
             <div className="w-full md:flex flex-row justify-center">
                 <div className="md:w-1/2 w-full">
                     <img

@@ -1,4 +1,3 @@
-import gsap from "gsap";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
@@ -6,8 +5,8 @@ import ProductsCounter from "../pages/Cart/components/ProductCounter";
 
 const Navbar = () => {
   const navRef = useRef<HTMLDivElement | null>(null);
-  const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const handleLogoClick = () => {
     window.location.href = '/';
@@ -16,7 +15,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      if (offset > 1000) {
+      if (offset > 500 && window.innerWidth >= 768) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
@@ -28,13 +27,6 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-    if (navRef.current) {
-      gsap.from(navRef.current, { opacity: 0 });
-      gsap.to(navRef.current, { opacity: 1, delay: 0.5 });
-    }
   }, []);
 
   const toggleMenu = () => {

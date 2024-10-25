@@ -3,7 +3,7 @@ import { ArrowLeft } from "lucide-react"
 
 const BackButton = () => {
   return (
-    <div>
+    <div className="fixed z-10">
         <Button color="error" onClick={() => window.history.go(-1)}><ArrowLeft /></Button>
     </div>
   )
