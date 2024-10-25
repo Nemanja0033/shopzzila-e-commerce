@@ -2,7 +2,7 @@ import { ShoppingBag } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductsCounter from "../pages/Cart/components/ProductCounter";
-import ThemeToggler from "../context/themeToggler";
+import ThemeToggler from "../utils/ThemeToggler";
 
 const Navbar = () => {
   const navRef = useRef<HTMLDivElement | null>(null);
