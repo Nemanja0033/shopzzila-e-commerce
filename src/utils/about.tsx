@@ -4,12 +4,8 @@ export const aboutSections = [
         content: "Welcome to Shopzzila!"
     },
     {
-        title: "About Project",
-        content: "We are dedicated to providing high-quality products at affordable prices."
-    },
-    {
         title: "Our Story",
-        content: "Founded in 2023, we started with a simple idea: to create a platform that offers a wide range of product categories. Since then, we’ve grown into a trusted destination for all your shopping needs."
+        content: "Founded in 2024, we started with a simple idea: to create a platform that offers a wide range of product categories. Since then, we’ve grown into a trusted destination for all your shopping needs."
     },
     {
         title: "What We Offer",

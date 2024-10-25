@@ -62,7 +62,7 @@ const CartPage = () => {
     
       <div className="mt-[100px] md:mt-0 shadow-md">
         {cartProducts.length > 0 ? 
-          <div ref={sidebarRef} className="w-full flex justify-center bg-gray-50">
+          <div ref={sidebarRef} className="w-full flex justify-center bg-transparent">
             <div className='mt-3'>
               <h1 className="text-gray-700 font-semibold text-center text-4xl md:text-2xl">Order Summary</h1>
               <br />
