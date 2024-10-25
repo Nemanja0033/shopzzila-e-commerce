@@ -31,11 +31,11 @@ const AboutContent = () => {
     }, []);
 
     return (
-        <div ref={aboutRef} className="max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg">
+        <div ref={aboutRef} className="max-w-2xl mx-auto p-6shadow-md rounded-lg ">
             {aboutSections.map((section, index) => (
                 <div key={index} className="mb-6">
-                    <h2 className="text-2xl font-semibold mt-6 mb-2">{section.title}</h2>
-                    <p className="text-gray-700">{section.content}</p>
+                    <h2 className="text-2xl font-semibold mt-6 mb-2 text-gray-600">{section.title}</h2>
+                    <p className="text-gray-500">{section.content}</p>
                 </div>
             ))}
         </div>

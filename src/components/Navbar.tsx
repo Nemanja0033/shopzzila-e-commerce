@@ -70,7 +70,7 @@ const Navbar = () => {
       {isOpen && (
         <div
           id="sm-nav"
-          className="md:hidden flex flex-col items-center justify-evenly text-gray-600 text-4xl absolute h-full z-10 top-16 left-0 right-0 bg-white"
+          className="md:hidden  flex flex-col items-center justify-evenly text-gray-600 text-4xl absolute h-full z-10 top-16 left-0 right-0 bg-white"
         >
           <Link onClick={closeNav} to="/" className="hover:text-primary">Home</Link>
           <Link onClick={closeNav} to="/products" className="hover:text-primary">Products</Link>
