@@ -3,7 +3,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addToCart } from "../Cart/CartPage";
-import { ArrowLeft, Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
+import {  Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import gsap from "gsap";
 import ProductCard from "../Products/components/ProductCard";
 import BackButton from "../../components/BackButton";
