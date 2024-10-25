@@ -41,7 +41,7 @@ const Navbar = () => {
   return (
     <nav
       ref={navRef}
-      className={`w-full shadow-sm h-16 flex lg:justify-evenly justify-between transition-all duration-300 ${isSticky ? 'fixed top-0 left-0 z-50' : ''}`}
+      className={`w-full shadow-sm h-16 bg-white flex lg:justify-evenly justify-between transition-all duration-300 ${isSticky ? 'fixed top-0 left-0 z-50' : ''}`}
     >
       <img
         onClick={handleLogoClick}
