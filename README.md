@@ -2,6 +2,11 @@
 
 Shopzzila is an e-commerce web app that showcases my frontend skills. It features a responsive, first-design approach with a landing page, products page, cart page, and product filtering.
 
+# Features 
+- Products filter search
+- Add/Remove from cart
+- Dark/Light mode UI
+
 
 # Technologies Used
 
