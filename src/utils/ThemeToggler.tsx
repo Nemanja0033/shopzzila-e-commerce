@@ -54,7 +54,7 @@ const ThemeToggler = () => {
     };
 
     return (
-        <div className="cursor-pointer" onClick={toggler}>
+        <div className="cursor-pointer hover{color-primary}" onClick={toggler}>
             {themeIcon}
         </div>
     );

@@ -92,7 +92,7 @@ const ProductsContent = () => {
     }
 
   return (
-    <div ref={productsRef} className='xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] p-5 mt-12'>
+    <div ref={productsRef} className='xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] p-5 mt-12 shadow-md'>
         <div className='flex justify-center mb-2'>
             <h1 className='text-gray-700 font-semibold mb-3'>PRODUCTS</h1>
         </div>
