@@ -11,23 +11,37 @@ const ThemeToggler = () => {
         } else {
             applyLightTheme();
         }
-    }, []);
+    }, );
 
     const applyDarkTheme = () => {
         document.body.style.backgroundColor = '#262626';
         document.getElementsByTagName('nav')[0].style.backgroundColor = '#262626';
+    
+        const smNav = document.getElementById('sm-nav');
+        if (smNav) {
+            smNav.style.backgroundColor = '#262626';
+        }
+    
         setThemeIcon(<SunIcon />);
         changeTextColor('white');
     };
-
+    
     const applyLightTheme = () => {
         document.body.style.backgroundColor = 'white';
         document.getElementsByTagName('nav')[0].style.backgroundColor = 'white';
+    
+        const smNav = document.getElementById('sm-nav');
+        if (smNav) {
+            smNav.style.backgroundColor = 'white';
+        }
+    
         setThemeIcon(<MoonIcon />);
         changeTextColor('black');
     };
+    
 
     const changeTextColor = (color: string) => {
+        
         const elements = [
             ...document.getElementsByTagName('p'),
             ...document.getElementsByTagName('h1'),
@@ -35,8 +49,8 @@ const ThemeToggler = () => {
             ...document.getElementsByTagName('option'),
             ...document.getElementsByTagName('span'),
         ];
-
-        elements.forEach((element) => {
+ 
+            elements.forEach((element) => {
             element.style.color = color;
         });
     };
