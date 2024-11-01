@@ -94,13 +94,13 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-10 shadow-md md:ml-0" style={{ opacity: 0 }}>
-            <h1 className="text-2xl text-gray-700 font-semibold">SHOPZZILA STORE</h1>
+        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-24 shadow-md md:ml-0" style={{ opacity: 0 }}>
+            <h1 className="text-2xl text-gray-700    font-semibold text-center">FILTERS</h1>
 
             <section className="mt-5">
                 <input 
                 type="text" 
-                className="border-gray-400 border-2 rounded px-2 w-full sm:mb-0" 
+                className="border-gray-400 border rounded px-2 w-full sm:mb-0" 
                 placeholder="Search Product"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)} />
@@ -108,13 +108,13 @@ const Sidebar = () => {
                 <div className="flex justify-center items-center mt-3 gap-1">
                     <input 
                     type="text" 
-                    className="border-gray-400 border-2 px-5 py-3 mb-3 w-full" 
+                    className="border-gray-400 border px-5 py-3 mb-3 w-full" 
                     placeholder="Min"
                     value={minPrice ?? ''}
                     onChange={handleMinPriceChange} />
                     <input 
                     type="text" 
-                    className="border-gray-400 border-2 px-5 py-3 mb-3 w-full" 
+                    className="border-gray-400 border px-5 py-3 mb-3 w-full" 
                     placeholder="Max"
                     value={maxPrice ?? ""}
                     onChange={handleMaxPriceChange} />

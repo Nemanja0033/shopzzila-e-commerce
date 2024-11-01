@@ -31,12 +31,12 @@ const CartPage = () => {
   return (
     <div>
       <BackButton />
-      <h1 className="text-gray-700 text-center font-semibold">C A R T</h1>
+      <h1 className="text-gray-700 text-center font-semibold mt-12">C A R T</h1>
       <div className="md:flex flex-row w-full mt-5 md:justify-center">
         {cartProducts.length > 0 ? (
           <div className="overflow-x-auto max-h-96 w-full flex flex-wrap justify-center">
             {cartProducts.map((product: { title: string; image: string; price: string; }, index: number | null | undefined) => (
-              <div className="border-2 m-2 md:w-1/5 w-1/2" key={index}>
+              <div className="border border-gray-100 rounded-md m-2 md:w-1/5 w-1/2" key={index}>
                 <Button onClick={() => removeProduct(index)} color="error"><Trash /></Button>
                 <h2 className="font-semibold text-gray-700 text-center mt-3">{product.title}</h2>
                 <img src={product.image} alt={product.title} />
