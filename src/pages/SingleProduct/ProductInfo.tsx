@@ -101,12 +101,6 @@ const ProductInfo = () => {
         );
     }
 
-    const productsParams = {
-        title: product.title,
-        image: product.images[0],
-        price: product.price.toString(),
-    };
-
     return (
         <>
         <BackButton />
