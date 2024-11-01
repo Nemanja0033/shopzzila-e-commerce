@@ -88,7 +88,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         if (sidebarRef.current) { 
-            gsap.from(sidebarRef.current, { opacity: 0, y: 1000 });
+            gsap.from(sidebarRef.current, { opacity: 0, y: 100 });
             gsap.to(sidebarRef.current, { opacity: 1, y: 0, delay: 0.3 });
         }
     }, []);

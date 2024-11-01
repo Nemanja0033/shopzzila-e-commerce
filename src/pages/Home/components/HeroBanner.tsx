@@ -11,14 +11,14 @@ const HeroBanner = () => {
 
   useEffect(() => {
     if(heroRef.current) {
-      gsap.from(heroRef.current, { opacity: 0, x: -400})
+      gsap.from(heroRef.current, { opacity: 0, x: -100})
       gsap.to(heroRef.current, {opacity: 1, x: 0, delay: 0.3})
     }
   }, [])
 
   useEffect(() => {
     if(bannerRef.current) {
-      gsap.from(bannerRef.current, { opacity: 0, x: 50})
+      gsap.from(bannerRef.current, { opacity: 0, x: 100})
       gsap.to(bannerRef.current, {opacity: 1, x: 0, delay: 0.3})
     }
   }, [])

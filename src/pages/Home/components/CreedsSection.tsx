@@ -12,7 +12,7 @@ const CreedsSection = () => {
             if (entry.isIntersecting) {
               gsap.fromTo(
                 promoRef.current,
-                { opacity: 0, x: 500 },
+                { opacity: 0, x: 100 },
                 { opacity: 1, x: 0, duration: 1.5 }
               );
               observer.unobserve(entry.target);

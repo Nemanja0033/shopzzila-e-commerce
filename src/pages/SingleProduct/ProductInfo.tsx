@@ -106,11 +106,16 @@ const ProductInfo = () => {
         <BackButton />
             <div className="w-full md:flex flex-row justify-center shadow-md">
                 <div className="md:w-1/2 w-full">
-                    <img
+                    {product.images[0] ? (
+                        <img
                         src={product.images[0]}
                         alt={product.title}
                         className="border-2 h-screen scale-75"
                     />
+                    )
+                :(
+                    <h1>Loading . . .</h1>
+                )}
                 </div>
 
                 <div className="md:w-1/2 w-full md:mt-[200px] flex-col">
@@ -119,7 +124,7 @@ const ProductInfo = () => {
                     </div>
 
                     <div className="mt-5 flex justify-center">
-                        <span className="text-gray-700 text-xl flex"><StarIcon /> {product.rating}</span>
+                        <span className="text-gray-700 text-xl flex"><StarIcon color="red" /> {product.rating}</span>
                     </div>
 
                     <div className="mt-5 flex justify-center">
