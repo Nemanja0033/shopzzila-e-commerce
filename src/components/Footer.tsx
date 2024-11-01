@@ -1,14 +1,39 @@
-import {  Github } from "lucide-react"
+import { GithubIcon } from "lucide-react";
 
 const Footer = () => {
-    return(
-        <div className="w-full flex-row mt-[100px] text-primary">
-            <div className="w-full flex justify-center mb-3 gap-4">
-                <a className="">Shopzzila 2024</a>
-                <a href="https://github.com/Nemanja0033" className="flex"><Github />Nemanja Antonijevic</a>
+    return (
+        <><div className="flex flex-col md:flex-row w-full md:justify-evenly p-6 md:p-10 shadow-sm">
+            <div className="flex flex-col items-center md:items-start mt-6 md:mt-0 mb-6 md:mb-0 md:w-1/3 px-4">
+                <h1 className="font-semibold text-2xl mb-3 text-center md:text-left">Shopzzila®</h1>
+                <p className="text-gray-500 text-center md:text-left leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+            </div>
+            
+        <div className="flex flex-col items-center md:items-start mt-6 md:mt-0 mb-6 md:mb-0 md:w-1/4 px-4">
+            <h1 className="font-semibold text-2xl mb-3 text-center md:text-left">Company</h1>
+            <nav className="text-gray-500 space-y-2 text-center md:text-left">
+                <a href="#" className="hover:text-black block">Home</a>
+                <a href="#" className="hover:text-black block">About Us</a>
+                <a href="#" className="hover:text-black block">Delivery</a>
+                <a href="#" className="hover:text-black block">Privacy Policy</a>
+            </nav>
+        </div>
+
+
+            <div className="flex flex-col items-center mt-6 md:mt-0 md:w-1/4 px-4">
+                <h1 className="font-semibold text-2xl mb-3 text-center">Get In Touch</h1>
+                <div className="text-center text-gray-500 space-y-1">
+                    <p>+018 5789 6584</p>
+                    <p>shopzilla@gmail.com</p>
+                </div>
             </div>
         </div>
-    )
-}
+        <div className="w-full h-[40px] flex justify-center items-center text-primary">
+            <a href="https://github.com/Nemanja0033" className="text-center flex"><GithubIcon />Nemanja Antonijevic</a>
+        </div>
+        </>
+    );
+};
 
-export default Footer
+export default Footer;
