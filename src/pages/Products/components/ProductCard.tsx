@@ -1,6 +1,5 @@
-import { Button } from "@mui/material"
 import { Link } from "react-router-dom"
-import { addToCart } from "../../Cart/CartPage"
+import AddToCart from "../../Cart/components/AddToCart"
 interface ProductCardProps {
     id: string,
     title: string,
@@ -18,7 +17,7 @@ const ProductCard: React.FC<ProductCardProps> = ({title, id, image, price}) => {
       <h2 className="font-bold text-gray-700">{title}</h2>
       <p>${price}</p>
       </Link>
-      <Button color="error" onClick={() => addToCart({title, image, price})}>Add To Cart</Button>
+      <AddToCart title={title} image={image} price={price} />
     </div>
   )
 }

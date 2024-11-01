@@ -11,7 +11,7 @@ const ThemeToggler = () => {
         } else {
             applyLightTheme();
         }
-    }, );
+    }, []);
 
     const applyDarkTheme = () => {
         document.body.style.backgroundColor = '#262626';

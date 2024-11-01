@@ -2,11 +2,11 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { addToCart } from "../Cart/CartPage";
 import {  Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import gsap from "gsap";
 import ProductCard from "../Products/components/ProductCard";
 import BackButton from "../../components/BackButton";
+import AddToCart from "../Cart/components/AddToCart";
 
 interface Product {
     id: number;
@@ -151,13 +151,7 @@ const ProductInfo = () => {
                     </div>
 
                     <div className="flex justify-center gap-4 mt-5">
-                        <Button
-                            variant="outlined"
-                            color="error"
-                            onClick={() => addToCart(productsParams)}
-                        >
-                            ADD TO CART
-                        </Button>
+                        <AddToCart title={product.title} image={product.images[0]} price={product.price.toString()} />
                         <Button variant="contained" color="error">PURCHASE {product.price}$ (-{Math.round(product.discountPercentage)}%)</Button>
                     </div>
                 </div>

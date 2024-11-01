@@ -7,11 +7,11 @@ import Footer from '../../components/Footer'
 const LandingPage = () => {
   return (
     <>
-    <HeroBanner />
-    <FeaturedProducts />
-    <PromoSection />
-    <Customers />
-    <Footer />
+      <HeroBanner />
+      <FeaturedProducts />
+      <PromoSection />
+      <Customers />
+      <Footer />
     </>
   )
 }

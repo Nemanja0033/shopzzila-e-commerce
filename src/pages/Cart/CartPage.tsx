@@ -4,18 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import BackButton from "../../components/BackButton";
 
-type Products = {
-  title: string,
-  image: string,
-  price: string 
-};
 
-export function addToCart({ title, image, price }: Products) {
-  const existingCart = JSON.parse(localStorage.getItem('cart') || '[]');
-  existingCart.push({ title, image, price });
-  localStorage.setItem('cart', JSON.stringify(existingCart));
-  window.dispatchEvent(new Event('storage'));
-}
 
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
