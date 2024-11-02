@@ -5,6 +5,11 @@ import PromoSection from './components/CreedsSection'
 import Footer from '../../components/Footer'
 
 const LandingPage = () => {
+
+  (function() {
+    document.title = 'Shopzzila'
+  })();
+  
   return (
     <>
       <HeroBanner />

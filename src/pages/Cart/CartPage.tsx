@@ -10,6 +10,10 @@ const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
   const sidebarRef = useRef<HTMLDivElement | null>(null);
 
+  (function(){
+    document.title = 'Shopzzila | Cart'
+  })();
+
   useEffect(() => {
     if (sidebarRef.current) {
       gsap.from(sidebarRef.current, { y: 400, opacity: 0 });

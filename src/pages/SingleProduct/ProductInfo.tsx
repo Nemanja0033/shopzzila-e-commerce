@@ -31,6 +31,7 @@ interface SimilarProduct {
     thumbnail: string;
 }
 
+
 const ProductInfo = () => {
     const { id } = useParams<{ id: string }>();
     const [product, setProducts] = useState<Product | null>(null);
@@ -38,6 +39,12 @@ const ProductInfo = () => {
     const [similarProducts, setSimilarProducts] = useState<SimilarProduct[]>([]); 
 
     const infoRef = useRef<HTMLDivElement | null>(null);
+
+    (function() {
+        document.title = `${product?.title}`
+      })();
+
+   
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {

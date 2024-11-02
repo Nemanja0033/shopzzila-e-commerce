@@ -4,6 +4,11 @@ import ProductsContent from "../../context/ProductsContent"
 import BackButton from "../../components/BackButton"
 
 const ProductsPage = () => {
+
+  (function() {
+    document.title = 'Shopzzila | Products'
+  })();
+  
   return (
     <div>
        <BackButton />
