@@ -16,7 +16,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      if (offset > 500 && window.innerWidth >= 768) {
+      if (offset > 600 && window.innerWidth >= 768) {
         setIsSticky(true);
       } else {
         setIsSticky(false);
