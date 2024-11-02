@@ -29,9 +29,9 @@ const Sidebar = () => {
     const [keywords] = useState<string[]>([
         "Fashion",
         "Smartphone",
-        "watch",
+        "Watch",
         "Sport",
-        "apple",
+        "home",
         "shirt",
     ]);
     
@@ -94,9 +94,7 @@ const Sidebar = () => {
     }, []);
 
     return (
-        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-24 shadow-md md:ml-0" style={{ opacity: 0 }}>
-            <h1 className="text-2xl text-gray-700    font-semibold text-center">FILTERS</h1>
-
+        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-20 md:ml-0" style={{ opacity: 0 }}>
             <section className="mt-5">
                 <input 
                 type="text" 
@@ -121,11 +119,11 @@ const Sidebar = () => {
                 </div>
 
                 <div className="mt-5">
-                    <h2 className="text-xl text-gray-700 font-semibold mb-3">Categories</h2>
+                    <h2 className="text-md text-gray-700 font-semibold mb-3">Category</h2>
                 </div>
 
                 {categories.map((category, index) => (
-                    <div key={index} className="flex-row ml-2">
+                    <div key={index} className="text-sm flex-row ml-2 ">
                         <label>
                         <input 
                         type="radio" 
@@ -140,9 +138,9 @@ const Sidebar = () => {
                 ))}
 
                 <div className="mt-5">
-                    <h2 className="text-xl text-gray-700 font-semibold mb-3">Keywords</h2>
+                    <h2 className="text-md text-gray-700 font-semibold mb-3">Most Popular</h2>
                     {keywords.map((keyword, index) => (
-                        <button key={index} onClick={() => handleKeywordChange(keyword)} className="block mb-2 px-4 py-2 w-full text-left border rounded hover:bg-primary hover:text-white text-gray-700">
+                        <button key={index} onClick={() => handleKeywordChange(keyword)} className=" text-sm block mb-2 px-4 py-2 w-full text-left border rounded-md hover:bg-primary hover:text-white text-gray-700">
                             {keyword.toUpperCase()}
                         </button>
                     ))}
