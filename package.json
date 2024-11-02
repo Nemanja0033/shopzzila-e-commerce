@@ -1,7 +1,7 @@
 {
-  "name": "x-tech-store",
+  "name": "shopzzila-e-commerce",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

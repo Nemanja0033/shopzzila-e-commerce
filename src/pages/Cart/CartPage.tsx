@@ -4,8 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import BackButton from "../../components/BackButton";
 
-
-
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
   const sidebarRef = useRef<HTMLDivElement | null>(null);
@@ -33,7 +31,7 @@ const CartPage = () => {
   const totalSum = cartProducts.reduce((acc: number, product: { price: string; }) => acc + parseFloat(product.price), 0);
 
   return (
-    <div>
+    <div className="flex-row">
       <BackButton />
       <h1 className="text-gray-700 text-center font-semibold mt-12">C A R T</h1>
       <div className="md:flex flex-row w-full mt-5 md:justify-center">
@@ -55,13 +53,13 @@ const CartPage = () => {
     
       <div className="mt-[100px] md:mt-0 shadow-md">
         {cartProducts.length > 0 ? 
-          <div ref={sidebarRef} className="w-full flex justify-center bg-transparent">
+          <div ref={sidebarRef} className="w-full flex justify-center bg-transparent items-end">
             <div className='mt-3'>
               <h1 className="text-gray-700 font-semibold text-center text-4xl md:text-2xl">Order Summary</h1>
               <br />
               <h3 className="text-start text-gray-700 font-semibold text-2xl md:text-xl mt-5 md:mt-0">Total ({cartProducts.length}) Items: ${totalSum.toFixed(2)}</h3>
               <br />
-              <div className="mt-5 md:mt-0 ml-5 md:ml-0">
+              <div className="mt-5 md:mt-0 ml-5 md:ml-0 mb-3">
                 <Button variant="contained" color="error" size="large">Checkout ${totalSum.toFixed(2)}</Button>
               </div>
             </div>
