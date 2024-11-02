@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import { useContext } from "react";
 import { CartCounterContext } from "../../../context/CartCounterContext";
+import { ShoppingBag } from "lucide-react";
 
 type Products = {
   title: string;
@@ -21,7 +22,7 @@ const AddToCart = ({ title, image, price }: Products) => {
 
   return (
     <div>
-      <Button color="error" onClick={addToCart}>Add To Cart</Button>
+      <Button variant="outlined" color="error" onClick={addToCart}><ShoppingBag  color="red" width='100px' /></Button>
     </div>
   );
 };

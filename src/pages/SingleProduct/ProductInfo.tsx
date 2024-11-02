@@ -149,7 +149,7 @@ const ProductInfo = () => {
                         <hr />
                     </div>
 
-                    <div className="flex justify-center gap-4 mt-5">
+                    <div className="flex justify-center gap-8 mt-5">
                         <AddToCart title={product.title} image={product.images[0]} price={product.price.toString()} />
                         <Button variant="contained" color="error">PURCHASE {product.price}$ (-{Math.round(product.discountPercentage)}%)</Button>
                     </div>

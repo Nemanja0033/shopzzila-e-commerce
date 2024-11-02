@@ -22,7 +22,7 @@ const ThemeToggler = () => {
             smNav.style.backgroundColor = '#262626';
         }
     
-        setThemeIcon(<SunIcon />);
+        setThemeIcon(<SunIcon className=" hover:text-primary" />);
         changeTextColor('white');
     };
     
@@ -35,7 +35,7 @@ const ThemeToggler = () => {
             smNav.style.backgroundColor = 'white';
         }
     
-        setThemeIcon(<MoonIcon />);
+        setThemeIcon(<MoonIcon className=" hover:text-primary" />);
         changeTextColor('black');
     };
     
