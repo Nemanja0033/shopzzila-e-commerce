@@ -15,7 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({title, id, image, price}) => {
         <h2 className="font-bold text-gray-700">{title}</h2>
         <p>${price}</p>
       </Link>
-      <div className="mt-4">
+      <div className="mt-4 flex justify-center">
         <AddToCart title={title} image={image} price={price} />
       </div>
     </div>
