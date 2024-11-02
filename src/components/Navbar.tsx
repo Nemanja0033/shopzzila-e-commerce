@@ -61,12 +61,21 @@ const Navbar = () => {
         <ThemeToggler />
       </div>
 
+      <div className="flex items-center gap-1">
+      <Link className="flex md:hidden" to="/cart">
+          <ShoppingBag className="text-gray-600 hover:text-primary" />
+          <CartCounter />
+      </Link>
+
       <button onClick={toggleMenu} className="md:hidden flex flex-col justify-center items-center mx-5">
         <span className="block w-6 h-1 bg-gray-600 mb-1"></span>
         <span className="block w-6 h-1 bg-gray-600 mb-1"></span>
         <span className="block w-6 h-1 bg-gray-600"></span>
       </button>
 
+      </div>
+
+      
       {isOpen && (
         <div
           id="sm-nav"

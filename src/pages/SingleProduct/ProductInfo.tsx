@@ -118,7 +118,7 @@ const ProductInfo = () => {
                 )}
                 </div>
 
-                <div className="md:w-1/2 w-full md:mt-[200px] flex-col">
+                <div className="md:w-1/2 w-full md:mt-[200px] md:mr-16 flex-col">
                     <div className="flex justify-center">
                         <span className="text-gray-700 font-semibold text-5xl text-center">{product.title}</span>
                     </div>
@@ -156,7 +156,7 @@ const ProductInfo = () => {
                 </div>
             </div>
 
-            <div className="w-full mt-32 md:mt-6">
+            <div className="w-full mt-32 md:mt-12">
             <h3 className="md:ml-11 ml-0 mt-3 text-center md:text-start  mb-3 text-primary font-semibold">S I M I L A R</h3>
             <h1 className="text-gray-700 md:ml-11 text-center md:text-start font-semibold md:text-3xl text-xl">Explore more {product.category} products</h1>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
