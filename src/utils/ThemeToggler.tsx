@@ -47,7 +47,6 @@ const ThemeToggler = () => {
             ...document.getElementsByTagName('h1'),
             ...document.getElementsByTagName('h2'),
             ...document.getElementsByTagName('option'),
-            ...document.getElementsByTagName('span'),
         ];
  
             elements.forEach((element) => {

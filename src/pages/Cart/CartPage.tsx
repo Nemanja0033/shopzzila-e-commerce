@@ -51,15 +51,15 @@ const CartPage = () => {
         )}
       </div>
     
-      <div className="mt-[100px] md:mt-0 shadow-md">
+      <div className="flex justify-center">
         {cartProducts.length > 0 ? 
-          <div ref={sidebarRef} className="w-full flex justify-center bg-transparent items-end">
+          <div ref={sidebarRef} className="w-full flex justify-center bg-transparent items-end border-t">
             <div className='mt-3'>
               <h1 className="text-gray-700 font-semibold text-center text-4xl md:text-2xl">Order Summary</h1>
               <br />
-              <h3 className="text-start text-gray-700 font-semibold text-2xl md:text-xl mt-5 md:mt-0">Total ({cartProducts.length}) Items: ${totalSum.toFixed(2)}</h3>
+              <h3 className="text-start text-gray-700 font-semibold text-2xl md:text-md mt-5 md:mt-0">Total ({cartProducts.length}) Items: ${totalSum.toFixed(2)}</h3>
               <br />
-              <div className="mt-5 md:mt-0 ml-5 md:ml-0 mb-3">
+              <div className="mt-5 md:mt-0 ml-5 md:ml-0 mb-3 flex justify-center">
                 <Button variant="contained" color="error" size="large">Checkout ${totalSum.toFixed(2)}</Button>
               </div>
             </div>
