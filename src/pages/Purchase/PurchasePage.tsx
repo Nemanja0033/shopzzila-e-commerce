@@ -46,10 +46,10 @@ const PurchasePage = () => {
     const handlePurchase = (event: React.FormEvent) => {
         event.preventDefault();
         if (isSingleProduct && product) {
-            alert(`Hvala što ste kupili ${product.title} za $${product.price}!`);
+            alert(`Thanks For Purchasing ${product.title} for $${product.price}!`);
             window.location.href = "/";
         } else {
-            alert(`Hvala što ste kupili proizvode u vrednosti $${totalSum.toFixed(2)}!`);
+            alert(`Thanks For Purchasing our products for $${totalSum.toFixed(2)}!`);
             window.location.href = "/";
             localStorage.removeItem("cart");
         }
@@ -67,29 +67,29 @@ const PurchasePage = () => {
                         <p className="font-semibold text-lg">${product.price}</p>
                     </div>
 
-            <p className="font-semibold text-lg mt-2">Total: ${product.price}$</p>
+            <p className="font-semibold text-lg mt-2 mb-2">Total: ${product.price}$</p>
             <form onSubmit={handlePurchase} className="flex flex-col gap-4 w-full mt-12">
                 <input
                     type="text"
-                    placeholder="Ime vlasnika kartice"
+                    placeholder="Card User Name"
                     className="border rounded-md p-2 w-full"
                     required
                 />
                 <input
                     type="email"
-                    placeholder="Email adresa"
+                    placeholder="Email Address"
                     className="border rounded-md p-2 w-full"
                     required
                 />
                 <input
                     type="text"
-                    placeholder="Adresa za dostavu"
+                    placeholder="Shiping Address"
                     className="border rounded-md p-2 w-full"
                     required
                 />
                 <input
                     type="text"
-                    placeholder="Broj kartice"
+                    placeholder="Card Number"
                     className="border rounded-md p-2 w-full"
                     required
                 />
@@ -134,25 +134,25 @@ const PurchasePage = () => {
             <form onSubmit={handlePurchase} className="flex flex-col gap-4 w-full">
                 <input
                     type="text"
-                    placeholder="Ime vlasnika kartice"
+                    placeholder="Card User Name"
                     className="border rounded-md p-2 w-full"
                     required
                 />
                 <input
                     type="email"
-                    placeholder="Email adresa"
+                    placeholder="Email Address"
                     className="border rounded-md p-2 w-full"
                     required
                 />
                 <input
                     type="text"
-                    placeholder="Adresa za dostavu"
+                    placeholder="Shiping Address"
                     className="border rounded-md p-2 w-full"
                     required
                 />
                 <input
                     type="text"
-                    placeholder="Broj kartice"
+                    placeholder="Card Number"
                     className="border rounded-md p-2 w-full"
                     required
                 />

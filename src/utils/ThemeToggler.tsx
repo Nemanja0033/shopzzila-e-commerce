@@ -1,8 +1,11 @@
 import { MoonIcon, SunIcon } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const ThemeToggler = () => {
     const [themeIcon, setThemeIcon] = useState(<MoonIcon />);
+
+    const location = useLocation()
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme');
@@ -11,7 +14,7 @@ const ThemeToggler = () => {
         } else {
             applyLightTheme();
         }
-    }, []);
+    }, [location]);
 
     const applyDarkTheme = () => {
         document.body.style.backgroundColor = '#262626';
@@ -47,6 +50,7 @@ const ThemeToggler = () => {
             ...document.getElementsByTagName('h1'),
             ...document.getElementsByTagName('h2'),
             ...document.getElementsByTagName('option'),
+            ...document.getElementsByTagName('input'),
         ];
  
             elements.forEach((element) => {
