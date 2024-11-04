@@ -3,6 +3,7 @@ import { Trash } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import BackButton from "../../components/BackButton";
+import { Link } from "react-router-dom";
 
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
@@ -60,7 +61,9 @@ const CartPage = () => {
               <h3 className="text-start text-gray-700 font-semibold text-2xl md:text-md mt-5 md:mt-0">Total ({cartProducts.length}) Items: ${totalSum.toFixed(2)}</h3>
               <br />
               <div className="mt-5 md:mt-0 ml-5 md:ml-0 mb-3 flex justify-center">
+               <Link  to={`/purchase/all`}>
                 <Button variant="contained" color="error" size="large">Checkout ${totalSum.toFixed(2)}</Button>
+               </Link>
               </div>
             </div>
           </div> : ''}

@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {  ArrowDown, Handshake, Layers, Recycle, StarIcon, Truck, User } from "lucide-react";
 import gsap from "gsap";
 import ProductCard from "../Products/components/ProductCard";
@@ -162,7 +162,9 @@ const ProductInfo = () => {
 
                     <div className="flex justify-center gap-8 mt-5">
                         <AddToCart title={product.title} image={product.images[0]} price={product.price.toString()} />
+                        <Link to={`/purchase/${id}`}>
                         <Button variant="contained" color="error">PURCHASE {product.price}$ (-{Math.round(product.discountPercentage)}%)</Button>
+                        </Link>
                     </div>
                     <br />
                 </div>
