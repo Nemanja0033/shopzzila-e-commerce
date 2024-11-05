@@ -24,12 +24,12 @@ const HeroBanner = () => {
   }, [])
 
   return (
-    <div className="w-full h-auto flex flex-col md:flex-row justify-between">
+    <div className="w-full h-auto flex flex-col md:flex-row justify-between shadow-md">
     <div ref={heroRef} className="w-full text-center mt-[150px]">
-        <h1 className="text-gray-700 text-5xl  font-bold">Welcome To The Shopzzila</h1>
+        <h1 className="text-gray-700 md:text-5xl text-4xl  font-bold">Welcome To The Shopzzila</h1>
         <br />
-        <p className="text-gray-500 text-2xl">Your One-Stop Shop for Everything You Desire</p>
-        <p className="text-gray-500 text-2xl">Explore Endless Categories and Unbeatable Deals—Shop Now!</p>
+        <p className="text-gray-500 md:text-2xl">Your One-Stop Shop for Everything You Desire</p>
+        <p className="text-gray-500 md:text-2xl">Explore Endless Categories and Unbeatable Deals—Shop Now!</p>
         <br />
         <div className="gap-4 flex justify-center">
             <Button variant="contained" color="error" size="medium"><Link to='/products'>Explore Products</Link></Button>

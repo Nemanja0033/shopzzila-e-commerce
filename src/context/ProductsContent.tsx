@@ -21,7 +21,6 @@ const ProductsContent = () => {
 
         axios.get(url).then(response => {
             setProducts(response.data.products)
-            console.log(response.data.products)
         }).catch(error => {error})
 
     }, [currentPage, keyword])
@@ -40,22 +39,18 @@ const ProductsContent = () => {
 
         if(selectedCategory) {
             filteredProducts = filteredProducts.filter(products => products.category === selectedCategory);
-            console.log(filteredProducts)
         }
 
         if(minPrice !== undefined){
             filteredProducts = filteredProducts.filter(product => product.price >= minPrice)
-            console.log(filteredProducts)
         }
 
         if(maxPrice !== undefined) {
             filteredProducts = filteredProducts.filter(product => product.price <= maxPrice)
-            console.log(filteredProducts)
         }
 
         if(searchQuery) {
             filteredProducts = filteredProducts.filter(product => product.title.toLowerCase().includes(searchQuery.toLowerCase()))
-            console.log(filteredProducts)
         }
         return filteredProducts;
     }

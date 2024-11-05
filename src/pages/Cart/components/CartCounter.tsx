@@ -8,7 +8,7 @@ const CartCounter = () => {
     return (
         <>
           {amount !== 0 ? (
-            <div className="w-[20px] h-[25px] rounded-xl bg-primary text-white text-center rounded-2xl">
+            <div className="w-[20px] h-[25px]  bg-primary text-white text-center rounded-2xl">
               <span>{amount}</span>
             </div>
           ) : null}

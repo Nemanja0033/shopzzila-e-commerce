@@ -121,7 +121,7 @@ const ProductInfo = () => {
                         <img
                         src={product.images[0]}
                         alt={product.title}
-                        className="border-2 h-screen scale-75"
+                        className="border-2 md:h-screen h-[600px] w-full scale-75"
                     />
                     )
                 :(
@@ -189,7 +189,7 @@ const ProductInfo = () => {
             <h3 className="md:ml-11 ml-0 mt-3 text-center md:text-start  mb-3 text-primary font-semibold">R E V I E W S</h3>
             <h1 className="text-gray-700 md:ml-11 text-center md:text-start font-semibold md:text-3xl text-xl">{product.title}</h1>
                 <div className="w-full md:flex flex-row justify-evenly gap-8 shadow-md">
-                    <div className="w-[300px] bg-transparent border shadow-md rounded-md mt-6 mb-6 md:ml-0 ml-16">
+                    <div className="md:w-[300px] w-full bg-transparent border shadow-md rounded-md mt-6 mb-6">
                        <div className="flex justify-center mt-1">
                             <h1 className="font-semibold text-xl flex gap-1"><User color="red" />{product.reviews[0].reviewerName}</h1>
                        </div>
@@ -207,7 +207,7 @@ const ProductInfo = () => {
                        </div>
                     </div>
                     
-                    <div className="w-[300px] bg-transparent border shadow-md rounded-md mt-6 mb-6 md:ml-0 ml-16">
+                    <div className="md:w-[300px] w-full bg-transparent border shadow-md rounded-md mt-6 mb-6">
                        <div className="flex justify-center mt-1">
                             <h1 className="font-semibold text-xl flex gap-1"><User color="red" />{product.reviews[1].reviewerName}</h1>
                        </div>
@@ -225,7 +225,7 @@ const ProductInfo = () => {
                        </div>
                     </div>
 
-                    <div className="w-[300px] bg-transparent border shadow-md rounded-md mt-6 mb-6 md:ml-0 ml-16">
+                    <div className="md:w-[300px] w-full bg-transparent border shadow-md rounded-md mt-6 mb-6">
                        <div className="flex justify-center mt-1">
                             <h1 className="font-semibold text-xl flex gap-1"><User color="red" />{product.reviews[2].reviewerName}</h1>
                        </div>
