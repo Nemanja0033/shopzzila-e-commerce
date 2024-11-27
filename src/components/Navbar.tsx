@@ -58,14 +58,15 @@ const Navbar = () => {
           <ShoppingBag className="hover:text-primary" />
           <CartCounter />
         </Link>
-        <ThemeToggler />
       </div>
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-2">
       <Link className="flex md:hidden" to="/cart">
           <ShoppingBag className=" hover:text-primary" />
           <CartCounter />
       </Link>
+      
+      <ThemeToggler />
 
       <button onClick={toggleMenu} className="md:hidden flex flex-col justify-center items-center mx-5">
         <span className="block w-6 h-1 bg-gray-600 mb-1"></span>
@@ -85,7 +86,6 @@ const Navbar = () => {
           <Link onClick={closeNav} to="/products" className="hover:text-primary">Products</Link>
           <Link onClick={closeNav} to="/about" className="hover:text-primary">About</Link>
           <Link onClick={closeNav} to='/cart'>Cart</Link>
-          <ThemeToggler />
         </div>
       )}
     </nav>
