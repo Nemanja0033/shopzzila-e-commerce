@@ -1,35 +1,12 @@
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { customer1, customer2, customer3 } from "../../../utils/customers"
-import gsap from "gsap";
+import { useAnim } from "../../../hooks/useAnim";
 
 const Customers = () => {
 
     const customersRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    gsap.fromTo(
-                        customersRef.current,
-                        { opacity: 0, x: -100 },
-                        { opacity: 1, x: 0, duration: 1.5 }
-                    );
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0 });
-    
-        if (customersRef.current) {
-            observer.observe(customersRef.current);
-        }
-    
-        return () => {
-            if (customersRef.current) {
-                observer.unobserve(customersRef.current);
-            }
-        };
-    }, []);
+    useAnim(customersRef);
 
     const customers = [
         { avatar: customer1.avatar, name: customer1.name, comment: customer1.comment },

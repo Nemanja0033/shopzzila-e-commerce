@@ -1,35 +1,12 @@
-import { useEffect, useRef } from "react"
-import gsap from "gsap";
+import { useRef } from "react"
 import { creed1, creed2, creed3 } from "../../../utils/creeds";
+import { useAnim } from "../../../hooks/useAnim";
 
 const CreedsSection = () => {
 
     const promoRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              gsap.fromTo(
-                promoRef.current,
-                { opacity: 0, x: 100 },
-                { opacity: 1, x: 0, duration: 1.5 }
-              );
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.5 }); 
-    
-        if (promoRef.current) {
-          observer.observe(promoRef.current);
-        }
-    
-        return () => {
-          if (promoRef.current) {
-            observer.unobserve(promoRef.current);
-          }
-        };
-      }, [promoRef]);
+    useAnim(promoRef);
 
       const creeds = [
         { title: creed1.title, icon: creed1.icon, text: creed1.text },

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useFilter } from '../../../context/FilterContext'
 import axios from 'axios'
 import ProductCard from './ProductCard'
-import gsap from 'gsap'
+import { useAnim } from '../../../hooks/useAnim'
 
 const ProductsContent = () => {
 
@@ -27,12 +27,7 @@ const ProductsContent = () => {
 
     const productsRef = useRef<HTMLDivElement | null>(null);
 
-    useEffect(() => {
-        if(productsRef.current){
-            gsap.from(productsRef.current, {opacity: 0.5});
-            gsap.to(productsRef.current, {opacity: 1, delay: 0.3})
-        }
-    }, [currentPage])
+    useAnim(productsRef);
 
     const getFilteredProducts = () => {
         let filteredProducts = products

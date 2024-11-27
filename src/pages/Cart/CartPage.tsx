@@ -1,9 +1,9 @@
 import Button from "@mui/material/Button";
 import { Trash } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useRef, useState } from "react";
 import BackButton from "../../components/BackButton";
 import { Link } from "react-router-dom";
+import { useAnim } from "../../hooks/useAnim";
 
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
@@ -13,12 +13,7 @@ const CartPage = () => {
     document.title = 'Shopzzila | Cart'
   })();
 
-  useEffect(() => {
-    if (sidebarRef.current) {
-      gsap.from(sidebarRef.current, { y: 400, opacity: 0 });
-      gsap.to(sidebarRef.current, { y: 0, opacity: 1 });
-    }
-  }, []);
+  useAnim(sidebarRef);
 
   const removeProduct = (index: number | null | undefined) => {
     const updatedCart = cartProducts.filter((_: any, i: number | null | undefined) => i !== index);
@@ -54,7 +49,7 @@ const CartPage = () => {
     
       <div className="flex justify-center">
         {cartProducts.length > 0 ? 
-          <div ref={sidebarRef} className="w-full flex justify-center  items-end shadow-md">
+          <div ref={sidebarRef} className="w-full flex justify-center items-end shadow-md">
             <div className='mt-3'>
               <h1 className="font-semibold text-center text-4xl md:text-2xl">Order Summary</h1>
               <br />

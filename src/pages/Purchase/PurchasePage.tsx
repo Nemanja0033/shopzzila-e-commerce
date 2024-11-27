@@ -58,7 +58,7 @@ const PurchasePage = () => {
     };
 
     return (
-        <div className="flex flex-col justify-self-center items-center border rounded-md md:w-[500px] w-full h-[80vh]  mt-12 p-4">
+        <div className="flex flex-col justify-self-center items-center border rounded-md md:w-[500px] w-full h-auto  mt-12 p-4">
             {isSingleProduct && product ? (
                 <>
                     <div className="flex justify-between items-center gap-11 border-b h-20">

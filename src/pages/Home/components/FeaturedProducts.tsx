@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import ProductCard from "../../Products/components/ProductCard";
-import gsap from "gsap";
 import { Button } from "@mui/material";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useAnim } from "../../../hooks/useAnim";
 
 const FeaturedProducts = () => {
   const featuredProductsRef = useRef<HTMLDivElement | null>(null);
@@ -45,30 +45,7 @@ const FeaturedProducts = () => {
     })
   }, [])
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          gsap.fromTo(
-            featuredProductsRef.current,
-            { opacity: 0, y: 200 },
-            { opacity: 1, y: 0, duration: 1.5 }
-          );
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0 }); 
-
-    if (featuredProductsRef.current) {
-      observer.observe(featuredProductsRef.current);
-    }
-
-    return () => {
-      if (featuredProductsRef.current) {
-        observer.unobserve(featuredProductsRef.current);
-      }
-    };
-  }, [featuredProductsRef]);
+  useAnim(featuredProductsRef);
 
   return (
     <div id='featured' ref={featuredProductsRef} className='w-full flex-row bg-transparent mt-5 mb-[100px] shadow-md'>

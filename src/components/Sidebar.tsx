@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useEffect, useState, useRef } from "react";
-import gsap from "gsap";
 import { useFilter } from "../context/FilterContext";
+import { useAnim } from "../hooks/useAnim";
 
 interface Product {
     category: string;
@@ -86,12 +86,7 @@ const Sidebar = () => {
         setKeyword("");
     }
 
-    useEffect(() => {
-        if (sidebarRef.current) { 
-            gsap.from(sidebarRef.current, { opacity: 0, y: 100 });
-            gsap.to(sidebarRef.current, { opacity: 1, y: 0, delay: 0.3 });
-        }
-    }, []);
+    useAnim(sidebarRef);
 
     return (
         <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-20 md:ml-0" style={{ opacity: 0 }}>
