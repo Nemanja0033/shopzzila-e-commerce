@@ -1,6 +1,6 @@
 import Sidebar from "../../components/Sidebar"
 import { FilterProvider } from "../../context/FilterContext"
-import ProductsContent from "../../context/ProductsContent"
+import ProductsContent from "./components/ProductsContent"
 import BackButton from "../../components/BackButton"
 
 const ProductsPage = () => {

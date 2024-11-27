@@ -98,7 +98,7 @@ const Sidebar = () => {
             <section className="mt-5">
                 <input 
                 type="text" 
-                className=" border rounded px-2 w-full sm:mb-0" 
+                className=" shadow-md bg-transparent rounded px-2 w-full sm:mb-0" 
                 placeholder="Search Product"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)} />
@@ -106,20 +106,20 @@ const Sidebar = () => {
                 <div className="flex justify-center items-center mt-3 gap-1">
                     <input 
                     type="text" 
-                    className=" border px-5 py-3 mb-3 w-full rounded-md" 
+                    className=" shadow-md bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
                     placeholder="Min $"
                     value={minPrice ?? ''}
                     onChange={handleMinPriceChange} />
                     <input 
                     type="text" 
-                    className=" border px-5 py-3 mb-3 w-full rounded-md" 
+                    className=" shadow-md bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
                     placeholder="Max $"
                     value={maxPrice ?? ""}
                     onChange={handleMaxPriceChange} />
                 </div>
 
                 <div className="mt-5">
-                    <h2 className="text-md text-gray-700 font-semibold mb-3">Category</h2>
+                    <h2 className="text-md font-semibold mb-3">Category</h2>
                 </div>
 
                 {categories.map((category, index) => (
@@ -129,7 +129,7 @@ const Sidebar = () => {
                         type="radio" 
                         name="category" 
                         value={category} 
-                        className="mr-2 w-[16px] h-[16px]"
+                        className="mr-2 w-[16px] h-[16px] "
                         onChange={() => handleRadioChangeCategories(category)}
                         checked={selectedCategory === category} 
                     />  {category.toUpperCase()}
@@ -138,9 +138,9 @@ const Sidebar = () => {
                 ))}
 
                 <div className="mt-5">
-                    <h2 className="text-md text-gray-700 font-semibold mb-3">Most Popular</h2>
+                    <h2 className="text-md font-semibold mb-3">Most Popular</h2>
                     {keywords.map((keyword, index) => (
-                        <button key={index} onClick={() => handleKeywordChange(keyword)} className=" text-sm block mb-2 px-4 py-2 w-full text-left border rounded-md hover:bg-primary hover:text-white text-gray-700">
+                        <button key={index} onClick={() => handleKeywordChange(keyword)} className=" text-sm block mb-2 px-4 py-2 w-full text-left border rounded-md hover:bg-primary hover:text-white">
                             {keyword.toUpperCase()}
                         </button>
                     ))}

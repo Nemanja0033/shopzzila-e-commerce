@@ -2,12 +2,11 @@ import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import {  ArrowDown, Handshake, Layers, Recycle, StarIcon, Truck, User } from "lucide-react";
+import { Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import gsap from "gsap";
 import ProductCard from "../Products/components/ProductCard";
 import BackButton from "../../components/BackButton";
 import AddToCart from "../Cart/components/AddToCart";
-import LikeReview from "./components/LikeReview";
 import Footer from "../../components/Footer";
 
 interface Product {
@@ -107,7 +106,7 @@ const ProductInfo = () => {
     if (!product) {
         return (
             <div className="flex items-center justify-center mt-[200px]">
-                <h1 className="text-center text-5xl">Loading . . .</h1>
+                <span className="loading loading-spinner loading-lg"></span>
             </div>
         );
     }
@@ -135,7 +134,7 @@ const ProductInfo = () => {
                     </div>
 
                     <div className="mt-5 flex justify-center">
-                        <span className="text-primary text-xl flex mr-2"><StarIcon color="red" /> {product.rating} <Button href="#reviews" color="error">Reviews <ArrowDown /></Button></span>
+                        <span className="text-primary text-xl flex mr-2"><StarIcon color="red" /> {product.rating}</span>
                     </div>
 
                     <div className="mt-5 flex justify-center">
@@ -170,7 +169,7 @@ const ProductInfo = () => {
                 </div>
             </div>
 
-            <div className="w-full mt-12 md:mt-10 shadow-md">
+            <div className="w-full mt-12 md:mt-20 shadow-md">
             <h3 className="md:ml-11 ml-0 mt-3 text-center md:text-start  mb-3 text-primary font-semibold">S I M I L A R</h3>
             <h1 className="md:ml-11 text-center md:text-start font-semibold md:text-3xl text-xl">Explore more {product.category} products</h1>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
@@ -184,67 +183,6 @@ const ProductInfo = () => {
                 </div>
                 <br /><br /><br />
             </div>
-
-            <div id="reviews" className="w-full mt-12 md:mt-10">
-            <h3 className="md:ml-11 ml-0 mt-3 text-center md:text-start  mb-3 text-primary font-semibold">R E V I E W S</h3>
-            <h1 className="md:ml-11 text-center md:text-start font-semibold md:text-3xl text-xl">{product.title}</h1>
-                <div className="w-full md:flex flex-row justify-evenly gap-8 shadow-md">
-                    <div className="md:w-[300px] w-full bg-transparent border shadow-md rounded-md mt-6 mb-6">
-                       <div className="flex justify-center mt-1">
-                            <h1 className="font-semibold text-xl flex gap-1"><User color="red" />{product.reviews[0].reviewerName}</h1>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <span className="text-gray-500 flex gap-1 text-sm">Rating: ({product.reviews[0].rating})</span>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <p className="text-gray-500">{product.reviews[0].comment}</p>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <span className="text-sm">{product.reviews[0].date}</span>
-                       </div>
-                       <div className="flex justify-center mt-1 mb-1">
-                            <LikeReview />
-                       </div>
-                    </div>
-                    
-                    <div className="md:w-[300px] w-full bg-transparent border shadow-md rounded-md mt-6 mb-6">
-                       <div className="flex justify-center mt-1">
-                            <h1 className="font-semibold text-xl flex gap-1"><User color="red" />{product.reviews[1].reviewerName}</h1>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <span className="text-gray-500 flex gap-1 text-sm">Rating: ({product.reviews[1].rating})</span>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <p className="text-gray-500">{product.reviews[1].comment}</p>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <span className="text-sm">{product.reviews[1].date}</span>
-                       </div>
-                       <div className="flex justify-center mt-1 mb-1">
-                            <LikeReview />
-                       </div>
-                    </div>
-
-                    <div className="md:w-[300px] w-full bg-transparent border shadow-md rounded-md mt-6 mb-6">
-                       <div className="flex justify-center mt-1">
-                            <h1 className="font-semibold text-xl flex gap-1"><User color="red" />{product.reviews[2].reviewerName}</h1>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <span className="text-gray-500 flex gap-1 text-sm">Rating: ({product.reviews[2].rating})</span>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <p className="text-gray-500">{product.reviews[2].comment}</p>
-                       </div>
-                       <div className="flex justify-center mt-1">
-                            <span className="text-sm">{product.reviews[2].date}</span>
-                       </div>
-                       <div className="flex justify-center mt-1 mb-1">
-                            <LikeReview />
-                       </div>
-                    </div>
-                </div>
-            </div>
-
             <Footer />
             
         </>

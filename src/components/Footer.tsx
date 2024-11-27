@@ -13,10 +13,10 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start mt-6 md:mt-0 mb-6 md:mb-0 md:w-1/4 px-4">
             <h1 className="font-semibold text-2xl mb-3 text-center md:text-left">Company</h1>
             <nav className="text-gray-500 space-y-2 text-center md:text-left">
-                <a href="#" className="hover:text-black block">Home</a>
-                <a href="#" className="hover:text-black block">About Us</a>
-                <a href="#" className="hover:text-black block">Delivery</a>
-                <a href="#" className="hover:text-black block">Privacy Policy</a>
+                <a href="#" className="block">Home</a>
+                <a href="#" className="block">About Us</a>
+                <a href="#" className="block">Delivery</a>
+                <a href="#" className="block">Privacy Policy</a>
             </nav>
         </div>
 
