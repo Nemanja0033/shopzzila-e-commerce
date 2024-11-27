@@ -78,7 +78,7 @@ const FeaturedProducts = () => {
 
 
       <div className="flex md:justify-start justify-center mt-3">
-        <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl"> Discount on all interior decoration</h1>
+        <h1 className="md:ml-11 font-semibold md:text-3xl text-xl"> Discount on all interior decoration</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
@@ -92,7 +92,7 @@ const FeaturedProducts = () => {
       </div>
 
       <div className="flex md:justify-start justify-center mt-20 md:mt-12">
-        <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Women's corner</h1>
+        <h1 className="md:ml-11 font-semibold md:text-3xl text-xl">Women's corner</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
@@ -107,7 +107,7 @@ const FeaturedProducts = () => {
 
       
       <div className="flex md:justify-start justify-center  mt-20 md:mt-12">
-        <h1 className="text-gray-700 md:ml-11 font-semibold md:text-3xl text-xl">Free Shiping On Smartphones</h1>
+        <h1 className="md:ml-11 font-semibold md:text-3xl text-xl">Free Shiping On Smartphones</h1>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">

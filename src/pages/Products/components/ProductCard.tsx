@@ -9,10 +9,10 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({title, id, image, price}) => {
   return (
-    <div className="flex flex-col border border-gray-100 rounded-md p-4 h-full">
+    <div className="flex flex-col shadow-md rounded-md p-4 h-full">
       <Link to={`/product/${id}`} className="flex-grow">
         <img src={image} alt={title} className="w-full h-32 object-cover mb-2 hover:scale-110 transition" />
-        <h2 className="font-bold text-gray-700">{title}</h2>
+        <h2 className="font-bold">{title}</h2>
         <p>${price}</p>
       </Link>
       <div className="mt-4 flex justify-center">

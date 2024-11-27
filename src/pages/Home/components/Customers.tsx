@@ -41,18 +41,18 @@ const Customers = () => {
     return (
         <div ref={customersRef} className="mt-[150px] shadow-md">
             <h3 className="text-primary font-semibold text-xl md:ml-11 ml-0 md:text-start text-center">C U S T O M E R S</h3>
-            <h1 className="text-gray-700 font-semibold text-3xl md:ml-11 ml-0 mt-3 md:text-start text-center md:mb-10">Customers say</h1>
+            <h1 className="font-semibold text-3xl md:ml-11 ml-0 mt-3 md:text-start text-center md:mb-10">Customers say</h1>
             <div className="w-[90%] flex-row justify-evenly ml-5 mr-3 md:ml-10">
                 <br />
                 {customers.map((customer, index) => (
                     <div key={index} className="flex-row mt-6">
-                        <h3 className="text-gray-700 text-2xl mb-3 flex">
+                        <h3 className="text-2xl mb-3 flex">
                             <span>
                                 <img className="w-[50px] mr-3 h-[50px]" src={customer.avatar} alt="" />
                             </span>
                             {customer.name}
                         </h3>
-                        <p className="text-gray-500">{customer.comment}</p>
+                        <p>{customer.comment}</p>
                     </div>
                 ))}
             </div>
