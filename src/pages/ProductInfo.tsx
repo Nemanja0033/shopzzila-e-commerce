@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import gsap from "gsap";
-import ProductCard from "../Products/components/ProductCard";
-import BackButton from "../../components/BackButton";
-import AddToCart from "../Cart/components/AddToCart";
-import Footer from "../../components/Footer";
+import ProductCard from "../components/ProductCard";
+import BackButton from "../components/BackButton";
+import AddToCart from "../components/AddToCart";
+import Footer from "../components/Footer";
 
 interface Product {
     id: number;

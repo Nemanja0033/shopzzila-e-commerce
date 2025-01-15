@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import ProductCard from "../../Products/components/ProductCard";
+import ProductCard from "./ProductCard";
 import { Button } from "@mui/material";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useAnim } from "../../../hooks/useAnim";
+import { useAnim } from "../hooks/useAnim";
 
 const FeaturedProducts = () => {
   const featuredProductsRef = useRef<HTMLDivElement | null>(null);

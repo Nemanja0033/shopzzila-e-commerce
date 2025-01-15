@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { useContext } from "react";
-import { CartCounterContext } from "../../../context/CartCounterContext";
+import { CartCounterContext } from "../context/CartCounterContext";
 import { ShoppingBag } from "lucide-react";
 
 type Products = {

@@ -1,6 +1,6 @@
 import { useRef } from "react"
-import { creed1, creed2, creed3 } from "../../../utils/creeds";
-import { useAnim } from "../../../hooks/useAnim";
+import { creed1, creed2, creed3 } from "../utils/creeds";
+import { useAnim } from "../hooks/useAnim";
 
 const CreedsSection = () => {
 

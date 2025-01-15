@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import LandingPage from "./pages/Home/LandingPage";
-import ProductsPage from "./pages/Products/ProductsPage";
-import AboutPage from "./pages/About/AboutPage";
-import CartPage from "./pages/Cart/CartPage";
-import ProductInfo from "./pages/SingleProduct/ProductInfo";
+import LandingPage from "./pages/LandingPage";
+import ProductsPage from "./pages/ProductsPage";
+import AboutPage from "./pages/AboutPage";
+import CartPage from "./pages/CartPage";
+import ProductInfo from "./pages/ProductInfo";
 import { CartCounterProvider } from "./context/CartCounterContext";
-import PurchasePage from "./pages/Purchase/PurchasePage";
+import PurchasePage from "./pages/PurchasePage";
 
 const App = () => {
   return (

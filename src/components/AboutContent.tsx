@@ -1,4 +1,4 @@
-import { aboutSections } from "../../../utils/about";
+import { aboutSections } from "../utils/about";
 
 const AboutContent = () => {
    

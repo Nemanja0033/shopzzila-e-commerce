@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
-import { useFilter } from '../../../context/FilterContext'
+import { useFilter } from '../context/FilterContext'
 import axios from 'axios'
-import ProductCard from './ProductCard'
-import { useAnim } from '../../../hooks/useAnim'
+import ProductCard from '../components/ProductCard'
+import { useAnim } from '../hooks/useAnim'
 
 const ProductsContent = () => {
 

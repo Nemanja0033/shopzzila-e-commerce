@@ -1,6 +1,6 @@
 import { useRef } from "react"
-import { customer1, customer2, customer3 } from "../../../utils/customers"
-import { useAnim } from "../../../hooks/useAnim";
+import { customer1, customer2, customer3 } from "../utils/customers"
+import { useAnim } from '../hooks/useAnim';
 
 const Customers = () => {
 

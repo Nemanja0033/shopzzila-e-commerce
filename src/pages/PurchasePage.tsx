@@ -41,7 +41,7 @@ const PurchasePage = () => {
         }
     }, [id, isSingleProduct]);
 
-    const totalSum = cartProducts.reduce((acc: any, product: { price: any; }) => acc + product.price, 0);
+    const totalSum = cartProducts.reduce((acc: number, product: { price: number; }) => acc + product.price, 0);
 
     const handlePurchase = (event: React.FormEvent) => {
         event.preventDefault();
