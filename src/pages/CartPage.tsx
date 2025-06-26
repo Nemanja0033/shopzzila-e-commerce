@@ -8,11 +8,6 @@ import { useAnim } from "../hooks/useAnim";
 const CartPage = () => {
   const [cartProducts, setCartProducts] = useState(() => JSON.parse(localStorage.getItem('cart') || '[]'));
   const sidebarRef = useRef<HTMLDivElement | null>(null);
-
-  (function(){
-    document.title = 'Shopzzila | Cart'
-  })();
-
   useAnim(sidebarRef);
 
   const removeProduct = (index: number | null | undefined) => {

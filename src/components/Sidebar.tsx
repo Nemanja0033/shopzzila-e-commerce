@@ -12,6 +12,7 @@ interface FetchResponse {
 }
 
 const Sidebar = () => {
+    const sidebarRef = useRef<HTMLDivElement | null>(null);
 
     const {
         searchQuery,
@@ -35,7 +36,6 @@ const Sidebar = () => {
         "shirt",
     ]);
     
-    const sidebarRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -93,7 +93,7 @@ const Sidebar = () => {
             <section className="mt-5">
                 <input 
                 type="text" 
-                className=" shadow-md bg-transparent rounded px-2 w-full sm:mb-0" 
+                className=" shadow-md border-2 bg-transparent rounded px-2 w-full sm:mb-0" 
                 placeholder="Search Product"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)} />
@@ -101,13 +101,13 @@ const Sidebar = () => {
                 <div className="flex justify-center items-center mt-3 gap-1">
                     <input 
                     type="text" 
-                    className=" shadow-md bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
+                    className=" shadow-md border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
                     placeholder="Min $"
                     value={minPrice ?? ''}
                     onChange={handleMinPriceChange} />
                     <input 
                     type="text" 
-                    className=" shadow-md bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
+                    className=" shadow-md border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
                     placeholder="Max $"
                     value={maxPrice ?? ""}
                     onChange={handleMaxPriceChange} />
@@ -124,7 +124,7 @@ const Sidebar = () => {
                         type="radio" 
                         name="category" 
                         value={category} 
-                        className="mr-2 w-[16px] h-[16px] "
+                        className="mr-2 w-[16px] h-[16px] border-2"
                         onChange={() => handleRadioChangeCategories(category)}
                         checked={selectedCategory === category} 
                     />  {category.toUpperCase()}

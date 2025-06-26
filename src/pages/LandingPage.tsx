@@ -6,18 +6,14 @@ import Footer from '../components/Footer'
 
 const LandingPage = () => {
 
-  (function() {
-    document.title = 'Shopzzila'
-  })();
-  
   return (
-    <>
+    <main>
       <HeroBanner />
       <FeaturedProducts />
       <PromoSection />
       <Customers />
       <Footer />
-    </>
+    </main>
   )
 }
 

@@ -5,7 +5,6 @@ import gsap from "gsap";
 import { Link } from "react-router-dom";
 
 const HeroBanner = () => {
-
   const heroRef = useRef<HTMLDivElement | null>(null);
   const bannerRef = useRef<HTMLDivElement | null>(null);
 
@@ -14,18 +13,17 @@ const HeroBanner = () => {
       gsap.from(heroRef.current, { opacity: 0, x: -100})
       gsap.to(heroRef.current, {opacity: 1, x: 0, delay: 0.3})
     }
-  }, [])
 
-  useEffect(() => {
     if(bannerRef.current) {
       gsap.from(bannerRef.current, { opacity: 0, x: 100})
       gsap.to(bannerRef.current, {opacity: 1, x: 0, delay: 0.3})
     }
-  }, [])
+  }, []);
+
 
   return (
     <div className="w-full h-auto flex flex-col md:flex-row justify-between shadow-md">
-    <div ref={heroRef} className="w-full text-center mt-[150px]">
+    <div ref={heroRef} className="w-full text-center mt-52">
         <h1 className="md:text-5xl text-4xl  font-bold">Welcome To The Shopzzila</h1>
         <br />
         <p className="md:text-2xl">Your One-Stop Shop for Everything You Desire</p>
