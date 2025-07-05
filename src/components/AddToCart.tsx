@@ -1,19 +1,9 @@
 import Button from "@mui/material/Button";
-import { useContext } from "react";
-import { CartCounterContext } from "../context/CartCounterContext";
 import { ShoppingBag } from "lucide-react";
-
-type Products = {
-  title: string;
-  image: string;
-  price: string;
-};
+import { Products } from "../types";
 
 const AddToCart = ({ title, image, price }: Products) => {
-  const { add } = useContext(CartCounterContext);
-
   const addToCart = () => {
-    add();
     const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
     existingCart.push({ title, image, price });
     localStorage.setItem("cart", JSON.stringify(existingCart));

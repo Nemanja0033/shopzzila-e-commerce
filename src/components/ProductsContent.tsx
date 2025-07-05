@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { useFilter } from '../context/FilterContext'
 import axios from 'axios'
-import ProductCard from '../components/ProductCard'
 import { useAnim } from '../hooks/useAnim'
+import ProductCard from './reusables/ProductCard'
 
 const ProductsContent = () => {
-
+    const productsRef = useRef<HTMLDivElement | null>(null);
     const {searchQuery, selectedCategory, maxPrice, minPrice, keyword} = useFilter()
-
     const [products, setProducts] = useState<any[]>([]);
-    const [currentPage, setCurrentPage] = useState(1);;
+    const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 12;
 
     useEffect(() => {
@@ -19,13 +18,11 @@ const ProductsContent = () => {
             url = `https://dummyjson.com/products/search?q=${keyword}`
         }
 
-        axios.get(url).then(response => {
-            setProducts(response.data.products)
-        }).catch(error => {error})
+        axios.get(url)
+        .then(response => {setProducts(response.data.products);})
+        .catch(error => {error});
 
-    }, [currentPage, keyword])
-
-    const productsRef = useRef<HTMLDivElement | null>(null);
+    }, [currentPage, keyword]);
 
     useAnim(productsRef);
 

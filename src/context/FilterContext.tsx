@@ -1,17 +1,5 @@
 import { useState, useContext, createContext, ReactNode } from "react";
-
-interface FilterContextType {
-    searchQuery: string;
-    setSearchQuery: (query: string) => void;
-    selectedCategory: string;
-    setSelectedCategory: (category: string) => void;
-    minPrice: number | undefined;
-    setMinPrice: (price: number | undefined) => void;
-    maxPrice: number | undefined;
-    setMaxPrice: (maxPrice: number | undefined) => void;
-    keyword: string;
-    setKeyword: (keyword: string) => void;
-}
+import { FilterContextType } from "../types";
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
 

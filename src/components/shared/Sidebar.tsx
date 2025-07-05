@@ -1,15 +1,8 @@
 import { Button } from "@mui/material";
 import { useEffect, useState, useRef } from "react";
-import { useFilter } from "../context/FilterContext";
-import { useAnim } from "../hooks/useAnim";
-
-interface Product {
-    category: string;
-}
-
-interface FetchResponse {
-    products: Product[];
-}
+import { useFilter } from "../../context/FilterContext";
+import { useAnim } from "../../hooks/useAnim";
+import { FetchResponse } from "../../types";
 
 const Sidebar = () => {
     const sidebarRef = useRef<HTMLDivElement | null>(null);

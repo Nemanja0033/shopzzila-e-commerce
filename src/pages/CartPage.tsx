@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import { Trash } from "lucide-react";
 import { useRef, useState } from "react";
-import BackButton from "../components/BackButton";
+import BackButton from "../components/ui/BackButton";
 import { Link } from "react-router-dom";
 import { useAnim } from "../hooks/useAnim";
 

@@ -1,11 +1,14 @@
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import ProductCard from "./ProductCard";
 import { Button } from "@mui/material";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useAnim } from "../hooks/useAnim";
+import { useAnim } from "../../hooks/useAnim";
+import ProductCard from "../reusables/ProductCard";
 
+// *TODO* clean up this useEffect mess, write reusable helper for this fetching
+
+// *TODO* find a better logic solution for this feautured section, check if api have endpoint for this
 const FeaturedProducts = () => {
   const featuredProductsRef = useRef<HTMLDivElement | null>(null);
   const [products, setProducts] = useState<any[]>([]);

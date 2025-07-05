@@ -1,8 +1,8 @@
-import FeaturedProducts from '../components/FeaturedProducts'
-import HeroBanner from '../components/HeroBanner'
-import Customers from '../components/Customers'
-import PromoSection from '../components/CreedsSection'
-import Footer from '../components/Footer'
+import HeroBanner from '../components/sections/HeroBanner'
+import PromoSection from '../components/sections/CreedsSection'
+import Footer from '../components/shared/Footer'
+import FeaturedProducts from '../components/sections/FeaturedProducts'
+import Customers from '../components/sections/Customers'
 
 const LandingPage = () => {
 

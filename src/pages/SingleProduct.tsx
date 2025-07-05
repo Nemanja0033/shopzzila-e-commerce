@@ -4,49 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import gsap from "gsap";
-import ProductCard from "../components/ProductCard";
-import BackButton from "../components/BackButton";
+import BackButton from "../components/ui/BackButton";
 import AddToCart from "../components/AddToCart";
-import Footer from "../components/Footer";
+import { Product, SimilarProduct } from "../types";
+import ProductCard from "../components/reusables/ProductCard";
 
-interface Product {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    rating: number;
-    images: string[];
-    returnPolicy: string;
-    shippingInformation: string;
-    warrantyInformation: string;
-    availabilityStatus: string;
-    discountPercentage: number;
-    category: string;
-    reviews: any;
-}
-
-interface SimilarProduct {
-    id: number;
-    title: string;
-    description: string;
-    price: number;
-    thumbnail: string;
-}
-
-
-const ProductInfo = () => {
+const SingleProduct = () => {
     const { id } = useParams<{ id: string }>();
     const [product, setProducts] = useState<Product | null>(null);
     const [showInfo, setShowinfo] = useState(false);
     const [similarProducts, setSimilarProducts] = useState<SimilarProduct[]>([]); 
-
     const infoRef = useRef<HTMLDivElement | null>(null);
-
-    (function() {
-        document.title = `${product?.title}`
-      })();
-
-   
 
     useEffect(() => {
         const observer = new IntersectionObserver((entries) => {
@@ -183,10 +151,9 @@ const ProductInfo = () => {
                 </div>
                 <br /><br /><br />
             </div>
-            <Footer />
             
         </>
     );
 };
 
-export default ProductInfo;
+export default SingleProduct;

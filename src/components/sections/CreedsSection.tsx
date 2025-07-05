@@ -1,12 +1,8 @@
 import { useRef } from "react"
-import { creed1, creed2, creed3 } from "../utils/creeds";
-import { useAnim } from "../hooks/useAnim";
+import { creed1, creed2, creed3 } from "../../utils/constants";
 
 const CreedsSection = () => {
-
     const promoRef = useRef<HTMLDivElement | null>(null);
-
-    useAnim(promoRef);
 
       const creeds = [
         { title: creed1.title, icon: creed1.icon, text: creed1.text },
@@ -23,7 +19,7 @@ const CreedsSection = () => {
                   <div key={index} className="w-full flex-row mt-20 md:mt-0">
                       <h1 className="ml-11  font-semibold text-3xl mt-3 text-center">{creed.title}</h1>
                       <div className="flex justify-center mt-3 mb-3">
-                          {creed.icon}
+                          <creed.icon />
                       </div>
                       <p className="text-center">{creed.text}</p>
                   </div>

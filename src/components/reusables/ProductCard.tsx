@@ -1,10 +1,5 @@
 import { Link } from "react-router-dom"
-interface ProductCardProps {
-    id: string,
-    title: string,
-    image: string,
-    price: string,
-}
+import { ProductCardProps } from "../../types"
 
 const ProductCard: React.FC<ProductCardProps> = ({title, id, image, price}) => {
   return (
@@ -17,6 +12,5 @@ const ProductCard: React.FC<ProductCardProps> = ({title, id, image, price}) => {
     </div>
   )
 }
-
 
 export default ProductCard

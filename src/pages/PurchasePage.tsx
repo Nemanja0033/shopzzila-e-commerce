@@ -2,13 +2,7 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { JSXElementConstructor, Key, ReactElement, ReactNode, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    images: string[];
-}
+import { Product } from "../types";
 
 const PurchasePage = () => {
     const { id } = useParams<{ id: string }>();

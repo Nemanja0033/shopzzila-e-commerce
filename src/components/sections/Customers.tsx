@@ -1,11 +1,9 @@
 import { useRef } from "react"
-import { customer1, customer2, customer3 } from "../utils/customers"
-import { useAnim } from '../hooks/useAnim';
+import { useAnim } from "../../hooks/useAnim";
+import { customer1, customer2, customer3 } from "../../utils/constants";
 
 const Customers = () => {
-
     const customersRef = useRef<HTMLDivElement | null>(null);
-
     useAnim(customersRef);
 
     const customers = [
