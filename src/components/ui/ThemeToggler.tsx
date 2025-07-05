@@ -2,7 +2,6 @@ import { MoonIcon, SunIcon } from "lucide-react";
 import { useEffect, useState } from "react"
 
 const ThemeToggler = () => {
-
     const [ theme, setTheme] = useState<any>(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
     const toggleChange = () => {

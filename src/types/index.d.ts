@@ -18,10 +18,6 @@ export interface ProductCardProps {
     price: string,
 }
 
-export interface Product {
-    category: string;
-}
-
 export interface FetchResponse {
     products: Product[];
 }
@@ -50,15 +46,29 @@ export interface SimilarProduct {
     thumbnail: string;
 }
 
-export interface Product {
-    id: number;
+type CartItem = {
+    id: string;
     title: string;
     price: number;
-    images: string[];
+    img: string,
+    amount: number,
+};
+
+type ProductItem = {
+    id: string;
+    title: string;
+    price: number;
+    img: string,
 }
 
-export type Products = {
-    title: string;
-    image: string;
-    price: string;
-  };
+export type CartAction =
+| { type: "ADD_ITEM"; payload: ProductItem }
+| { type: "REMOVE_ITEM"; payload: string }
+| { type: "INCREMENT"; payload: string}
+| { type: "DECREMENT"; payload: string}
+| { type: "CLEAR_CART" }
+
+
+export type CartState = {
+    items: CartItem[];
+};

@@ -2,6 +2,7 @@ import { ShoppingBag } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggler from "../ui/ThemeToggler";
+import CartLink from "../reusables/CartLink";
 
 const Navbar = () => {
   const navRef = useRef<HTMLDivElement | null>(null);
@@ -53,9 +54,7 @@ const Navbar = () => {
         <Link to="/" className="hover:text-primary">Home</Link>
         <Link to="/products" className="hover:text-primary">Products</Link>
         <Link to="/about" className="hover:text-primary">About</Link>
-        <Link className="flex gap-2" to="/cart">
-          <ShoppingBag className="hover:text-primary" />
-        </Link>
+        <CartLink />
       </div>
 
       <div className="flex items-center gap-2">

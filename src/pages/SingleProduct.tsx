@@ -128,7 +128,7 @@ const SingleProduct = () => {
                     </div>
 
                     <div className="flex justify-center gap-8 mt-5">
-                        <AddToCart title={product.title} image={product.images[0]} price={product.price.toString()} />
+                        <AddToCart title={product.title} img={product.images[0]} price={product.price} id={product.id.toString()} />
                         <Link to={`/purchase/${id}`}>
                         <Button variant="contained" color="error">PURCHASE {product.price}$ (-{Math.round(product.discountPercentage)}%)</Button>
                         </Link>

@@ -1,13 +1,20 @@
 import Button from "@mui/material/Button";
 import { ShoppingBag } from "lucide-react";
-import { Products } from "../types";
+import { CartItem, ProductItem } from "../types";
+import { useCart } from "../context/CartContext";
 
-const AddToCart = ({ title, image, price }: Products) => {
+const AddToCart = ({ title, img, price, id }: ProductItem) => {
+  const { dispatch } = useCart();
+
+  const item = {
+    title,
+    img,
+    price,
+    id,
+  };
+
   const addToCart = () => {
-    const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
-    existingCart.push({ title, image, price });
-    localStorage.setItem("cart", JSON.stringify(existingCart));
-    window.dispatchEvent(new Event("storage"));
+    dispatch({ type: "ADD_ITEM", payload: item });
   };
 
   return (
