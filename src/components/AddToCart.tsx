@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { ShoppingBag } from "lucide-react";
-import { CartItem, ProductItem } from "../types";
+import { ProductItem } from "../types";
 import { useCart } from "../context/CartContext";
 
 const AddToCart = ({ title, img, price, id }: ProductItem) => {
