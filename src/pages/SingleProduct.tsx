@@ -1,7 +1,7 @@
 import Button from "@mui/material/Button";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Handshake, Layers, Recycle, StarIcon, Truck } from "lucide-react";
 import BackButton from "../components/ui/BackButton";
 import AddToCart from "../components/AddToCart";
@@ -93,9 +93,7 @@ const SingleProduct = () => {
 
                     <div className="flex justify-center gap-8 mt-5">
                         <AddToCart title={product.title} img={product.images[0]} price={product.price} id={product.id.toString()} />
-                        <Link to={`/purchase/${id}`}>
                         <Button variant="contained" color="error">PURCHASE {product.price}$ (-{Math.round(product.discountPercentage)}%)</Button>
-                        </Link>
                     </div>
                     
                     <div className="grid md:grid-cols-3 grid-cols-2 gap-2 mt-5">
