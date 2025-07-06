@@ -8,7 +8,7 @@ const ProductsContent = () => {
     const [products, setProducts] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [isFilterActive, setIsFilterActive] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
     const itemsPerPage = 12;
     const totalProducts = 200;
     const totalPages = Math.ceil(totalProducts / itemsPerPage)
@@ -19,15 +19,15 @@ const ProductsContent = () => {
         if(keyword) {
             url = `https://dummyjson.com/products/search?q=${keyword}`
         }
-        setIsLoading(true);
+        // setIsLoading(true);
         axios.get(url)
         .then(response => {
             setProducts(response.data.products);
-            setIsLoading(false);
+            // setIsLoading(false);
         })
         .catch(error => {
             console.log(error);
-            setIsLoading(false);
+            // setIsLoading(false);
         });
 
     }, [currentPage, keyword]);
