@@ -1,7 +1,6 @@
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useFilter } from "../../context/FilterContext";
-import { useAnim } from "../../hooks/useAnim";
 import { FetchResponse } from "../../types";
 
 const Sidebar = () => {
