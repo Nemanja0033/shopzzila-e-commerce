@@ -61,3 +61,5 @@ export const customer3 = {
     avatar: 'https://avatar.iran.liara.run/public/11',
     comment: 'Checkout is quick and secure, and I love the variety of payment options available. Plus, my orders have always arrived on time and in perfect condition.'
 }
+
+export const logoUrl = 'https://i.postimg.cc/zBcYzVPW/logo-1.png';

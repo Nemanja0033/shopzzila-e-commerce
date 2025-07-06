@@ -1,15 +1,17 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useFilter } from '../context/FilterContext'
 import axios from 'axios'
-import { useAnim } from '../hooks/useAnim'
 import ProductCard from './reusables/ProductCard'
 
 const ProductsContent = () => {
-    const productsRef = useRef<HTMLDivElement | null>(null);
     const {searchQuery, selectedCategory, maxPrice, minPrice, keyword} = useFilter()
     const [products, setProducts] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [isFilterActive, setIsFilterActive] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const itemsPerPage = 12;
+    const totalProducts = 200;
+    const totalPages = Math.ceil(totalProducts / itemsPerPage)
 
     useEffect(() => {
         let url = `https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currentPage - 1) * itemsPerPage}`
@@ -17,40 +19,48 @@ const ProductsContent = () => {
         if(keyword) {
             url = `https://dummyjson.com/products/search?q=${keyword}`
         }
-
+        setIsLoading(true);
         axios.get(url)
-        .then(response => {setProducts(response.data.products);})
-        .catch(error => {error});
+        .then(response => {
+            setProducts(response.data.products);
+            setIsLoading(false);
+        })
+        .catch(error => {
+            console.log(error);
+            setIsLoading(false);
+        });
 
     }, [currentPage, keyword]);
 
-    useAnim(productsRef);
-
     const getFilteredProducts = () => {
-        let filteredProducts = products
+        let filteredProducts = products;
 
-        if(selectedCategory) {
-            filteredProducts = filteredProducts.filter(products => products.category === selectedCategory);
+        if (selectedCategory) {
+            filteredProducts = filteredProducts.filter(product => product.category === selectedCategory);
         }
 
-        if(minPrice !== undefined){
-            filteredProducts = filteredProducts.filter(product => product.price >= minPrice)
+        if (minPrice !== undefined) {
+            filteredProducts = filteredProducts.filter(product => product.price >= minPrice);
         }
 
-        if(maxPrice !== undefined) {
-            filteredProducts = filteredProducts.filter(product => product.price <= maxPrice)
+        if (maxPrice !== undefined) {
+            filteredProducts = filteredProducts.filter(product => product.price <= maxPrice);
         }
 
-        if(searchQuery) {
-            filteredProducts = filteredProducts.filter(product => product.title.toLowerCase().includes(searchQuery.toLowerCase()))
+        if (searchQuery) {
+            filteredProducts = filteredProducts.filter(product => product.title.toLowerCase().includes(searchQuery.toLowerCase()));
         }
+
         return filteredProducts;
-    }
+    };
 
-    const filteredProducts = getFilteredProducts()
+    const filteredProducts = getFilteredProducts();
 
-    const totaProducts = 200;
-    const totalPages = Math.ceil(totaProducts / itemsPerPage)
+    useEffect(() => {
+        const isActive = selectedCategory || minPrice !== undefined || maxPrice !== undefined || searchQuery || keyword;
+        setIsFilterActive(!!isActive);
+    }, [selectedCategory, minPrice, maxPrice, searchQuery]);
+
 
     const handlePageChange = (page: number) => {
         if(page > 0 && page <= totalPages){
@@ -79,7 +89,7 @@ const ProductsContent = () => {
     }
 
   return (
-    <div ref={productsRef} className='xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] p-5 mt-12 shadow-md'>
+    <div className='xl:w-[55rem] lg:w-[55rem] rounded-md sm:w-[40rem] p-5 border-2'>
         <div className='flex justify-center mb-2'>
             <h1 className='font-semibold mb-3'>PRODUCTS</h1>
         </div>
@@ -93,12 +103,12 @@ const ProductsContent = () => {
                              />
             ))}
         </div>
-        <div className='flex justify-between items-center mt-5'>
+        <div className={`flex justify-between items-center mt-5 ${isFilterActive && 'hidden'}`}>
                 <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)} className='border px-4 py-2 mx-2 rounded-full'>
                     Previous
                 </button>
 
-                <div className='flex flex-wrap justify-center'>
+                <div className={`flex flex-wrap justify-center`}>
                     {getPaginationButtons().map((page) => (
                         <button onClick={() => handlePageChange(page)} className={`border px-4 py-2 mx-1 rounded-full ${page === currentPage ? 'bg-primary text-white' : ""}`} key={Math.random()}>{page}</button>
                     ))}

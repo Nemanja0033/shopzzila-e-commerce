@@ -1,12 +1,10 @@
 import { Button } from "@mui/material";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useFilter } from "../../context/FilterContext";
 import { useAnim } from "../../hooks/useAnim";
 import { FetchResponse } from "../../types";
 
 const Sidebar = () => {
-    const sidebarRef = useRef<HTMLDivElement | null>(null);
-
     const {
         searchQuery,
         setSearchQuery,
@@ -79,14 +77,12 @@ const Sidebar = () => {
         setKeyword("");
     }
 
-    useAnim(sidebarRef);
-
     return (
-        <div ref={sidebarRef} className="md:w-64 w-full p-5 h-full mt-20 md:ml-0" style={{ opacity: 0 }}>
+        <div className="md:w-64 w-full p-5 h-full border-2 rounded-md">
             <section className="mt-5">
                 <input 
                 type="text" 
-                className=" shadow-md border-2 bg-transparent rounded px-2 w-full sm:mb-0" 
+                className="border-2 bg-transparent rounded px-2 w-full sm:mb-0" 
                 placeholder="Search Product"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)} />
@@ -94,13 +90,13 @@ const Sidebar = () => {
                 <div className="flex justify-center items-center mt-3 gap-1">
                     <input 
                     type="text" 
-                    className=" shadow-md border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
+                    className="border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
                     placeholder="Min $"
                     value={minPrice ?? ''}
                     onChange={handleMinPriceChange} />
                     <input 
                     type="text" 
-                    className=" shadow-md border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
+                    className="border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
                     placeholder="Max $"
                     value={maxPrice ?? ""}
                     onChange={handleMaxPriceChange} />
@@ -117,7 +113,7 @@ const Sidebar = () => {
                         type="radio" 
                         name="category" 
                         value={category} 
-                        className="mr-2 w-[16px] h-[16px] border-2"
+                        className="mr-2 w-[16px] h-[16px] border-1"
                         onChange={() => handleRadioChangeCategories(category)}
                         checked={selectedCategory === category} 
                     />  {category.toUpperCase()}

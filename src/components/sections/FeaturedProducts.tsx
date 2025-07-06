@@ -6,47 +6,26 @@ import { Link } from "react-router-dom";
 import { useAnim } from "../../hooks/useAnim";
 import ProductCard from "../reusables/ProductCard";
 
-// *TODO* clean up this useEffect mess, write reusable helper for this fetching
-
-// *TODO* find a better logic solution for this feautured section, check if api have endpoint for this
 const FeaturedProducts = () => {
   const featuredProductsRef = useRef<HTMLDivElement | null>(null);
   const [products, setProducts] = useState<any[]>([]);
   const [product2, setProducts2] = useState<any[]>([]);
   const [product3, setProducts3] = useState<any[]>([]);
 
+  const fetchProducts = async (url: string, setter: React.Dispatch<React.SetStateAction<any[]>>) => {
+    try {
+      const response = await axios.get(url);
+      setter(response.data.products);
+    } catch (error) {
+      console.error(`Error fetching products from ${url}:`, error);
+    }
+  };
+
   useEffect(() => {
-    const url = 'https://dummyjson.com/products/category/home-decoration';
-    axios.get(url)
-      .then(response => {
-        setProducts(response.data.products);
-      })
-      .catch(error => {
-        console.error("Error fetching products:", error);
-      });
+    fetchProducts('https://dummyjson.com/products/category/home-decoration', setProducts);
+    fetchProducts('https://dummyjson.com/products/category/beauty', setProducts2);
+    fetchProducts('https://dummyjson.com/products/category/smartphones?limit=5', setProducts3);
   }, []);
-
-  useEffect(() => {
-    const url = 'https://dummyjson.com/products/category/beauty';
-    axios.get(url)
-    .then(response => {
-      setProducts2(response.data.products);
-    })
-    .catch(error => {
-      console.error('Error fetching trending products', error)
-    })
-  }, [])
-
-  useEffect(() => {
-    const url = 'https://dummyjson.com/products/category/smartphones?limit=5';
-    axios.get(url)
-    .then(response => {
-      setProducts3(response.data.products)
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }, [])
 
   useAnim(featuredProductsRef);
 

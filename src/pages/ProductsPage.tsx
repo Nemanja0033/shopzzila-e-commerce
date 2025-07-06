@@ -8,7 +8,7 @@ const ProductsPage = () => {
   return (
     <div>
        <BackButton />
-        <div className="w-full md:flex grid-cols-1 justify-center">
+        <div className="w-full md:flex grid grid-cols-1 md:p-20 p-5 justify-center gap-5">
           <FilterProvider>
             <Sidebar />
             <ProductsContent />

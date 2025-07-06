@@ -1,17 +1,12 @@
-import { ShoppingBag } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import ThemeToggler from "../ui/ThemeToggler";
 import CartLink from "../reusables/CartLink";
+import { logoUrl } from "../../utils/constants";
 
 const Navbar = () => {
   const navRef = useRef<HTMLDivElement | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-
-  const handleLogoClick = () => {
-    window.location.href = '/';
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,60 +25,24 @@ const Navbar = () => {
     };
   }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeNav = () => {
-    setIsOpen(false);
-  };
-
   return (
-    <nav
-      ref={navRef}
-      className={`w-full shadow-sm h-16 bg-base-100 flex lg:justify-evenly justify-between transition-all duration-300 ${isSticky ? 'fixed top-0 left-0 z-50' : ''}`}
-    >
-      <img
-        onClick={handleLogoClick}
-        className="mb-2 cursor-pointer"
-        src="https://i.postimg.cc/zBcYzVPW/logo-1.png"
-        alt="shopzzila-logo"
-      />
+    <nav ref={navRef} className={`w-full h-[80px] bg-base-100 shadow-md flex justify-between md:px-12 px-2 ${isSticky ? 'fixed top-0 left-0 z-50' : ''}`}>
+      <div>
+        <Link to={'/'}>
+            <img className="h-16" src={logoUrl} alt="logo" />
+        </Link>
+      </div>
 
-      <div className="hidden md:flex justify-around w-1/2 items-center gap-4">
+      <div className="flex md:gap-24 gap-5 items-center">
         <Link to="/" className="hover:text-primary">Home</Link>
         <Link to="/products" className="hover:text-primary">Products</Link>
         <Link to="/about" className="hover:text-primary">About</Link>
+      </div>
+
+      <div className="flex items-center">
         <CartLink />
+        <ThemeToggler />
       </div>
-
-      <div className="flex items-center gap-2">
-      <Link className="flex md:hidden" to="/cart">
-          <ShoppingBag className=" hover:text-primary" />
-      </Link>
-      
-      <ThemeToggler />
-
-      <button onClick={toggleMenu} className="md:hidden flex flex-col justify-center items-center mx-5">
-        <span className="block w-6 h-1 bg-gray-600 mb-1"></span>
-        <span className="block w-6 h-1 bg-gray-600 mb-1"></span>
-        <span className="block w-6 h-1 bg-gray-600"></span>
-      </button>
-
-      </div>
-
-      
-      {isOpen && (
-        <div
-          id="sm-nav"
-          className="md:hidden bg-base-100 flex flex-col items-center justify-evenly text-4xl absolute h-full z-10 top-16 left-0 right-0"
-        >
-          <Link onClick={closeNav} to="/" className="hover:text-primary">Home</Link>
-          <Link onClick={closeNav} to="/products" className="hover:text-primary">Products</Link>
-          <Link onClick={closeNav} to="/about" className="hover:text-primary">About</Link>
-          <Link onClick={closeNav} to='/cart'>Cart</Link>
-        </div>
-      )}
     </nav>
   );
 };
