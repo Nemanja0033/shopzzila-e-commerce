@@ -44,7 +44,7 @@ const CartPage = () => {
       <div className="w-full fixed bottom-0 bg-base-100 border-t">
         {state.items.length > 0 ? 
           <div className="w-full flex justify-center items-end shadow-md">
-            <div className='mt-3'>
+            <div className='mt-3 grid place-items-center'>
               <h1 className="font-semibold text-center text-4xl md:text-2xl">Order Summary</h1>
               <br />
               <h3 className="text-start font-semibold text-2xl md:text-md mt-5 md:mt-0">Total ({state.items.length}) Items</h3>

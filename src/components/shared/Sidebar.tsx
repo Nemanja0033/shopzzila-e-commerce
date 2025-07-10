@@ -2,30 +2,13 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useFilter } from "../../context/FilterContext";
 import { FetchResponse } from "../../types";
+import { MenuIcon } from "lucide-react";
 
 const Sidebar = () => {
-    const {
-        searchQuery,
-        setSearchQuery,
-        selectedCategory,
-        setSelectedCategory,
-        minPrice,
-        setMinPrice,
-        maxPrice,
-        setMaxPrice,
-        setKeyword,
-    } = useFilter()
-
+    const { searchQuery, setSearchQuery, selectedCategory, setSelectedCategory, minPrice, setMinPrice, maxPrice, setMaxPrice, setKeyword } = useFilter();
+    const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [categories, setCategories] = useState<string[]>([]);
-    const [keywords] = useState<string[]>([
-        "Fashion",
-        "Smartphone",
-        "Watch",
-        "Sport",
-        "home",
-        "shirt",
-    ]);
-    
+    const [keywords] = useState<string[]>([ "Fashion","Smartphone","Watch","Sport","home","shirt" ]);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -74,66 +57,76 @@ const Sidebar = () => {
         setMinPrice(undefined);
         setMaxPrice(undefined);
         setKeyword("");
+        setKeyword("");
+    }
+
+    const handleSidebarMenu = () => {
+        setIsMenuVisible(!isMenuVisible);
     }
 
     return (
-        <div className="md:w-64 w-full p-5 h-full border-2 rounded-md">
-            <section className="mt-5">
-                <input 
-                type="text" 
-                className="border-2 bg-transparent rounded px-2 w-full sm:mb-0" 
-                placeholder="Search Product"
-                value={searchQuery}
-                onChange={e => setSearchQuery(e.target.value)} />
-
-                <div className="flex justify-center items-center mt-3 gap-1">
+        <>
+            <div className="bg-red-500 relative w-full right-25 p-3 h-12 text-white flex lg:hidden justify-center items-center">
+                <button onClick={handleSidebarMenu} className="flex w-full items-center justify-center"><MenuIcon /> menu</button>
+            </div>
+            <div className={`md:w-64 lg:flex ${isMenuVisible ? 'static' : 'hidden'} w-full p-5 h-full border-2 rounded-md`}>
+                <section className="mt-5">
                     <input 
                     type="text" 
-                    className="border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
-                    placeholder="Min $"
-                    value={minPrice ?? ''}
-                    onChange={handleMinPriceChange} />
-                    <input 
-                    type="text" 
-                    className="border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
-                    placeholder="Max $"
-                    value={maxPrice ?? ""}
-                    onChange={handleMaxPriceChange} />
-                </div>
+                    className="border-2 bg-transparent rounded px-2 w-full sm:mb-0" 
+                    placeholder="Search Product"
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)} />
 
-                <div className="mt-5">
-                    <h2 className="text-md font-semibold mb-3">Category</h2>
-                </div>
-
-                {categories.map((category, index) => (
-                    <div key={index} className="text-sm flex-row ml-2 ">
-                        <label>
+                    <div className="flex justify-center items-center mt-3 gap-1">
                         <input 
-                        type="radio" 
-                        name="category" 
-                        value={category} 
-                        className="mr-2 w-[16px] h-[16px] border-1"
-                        onChange={() => handleRadioChangeCategories(category)}
-                        checked={selectedCategory === category} 
-                    />  {category.toUpperCase()}
-                        </label>
+                        type="text" 
+                        className="border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
+                        placeholder="Min $"
+                        value={minPrice ?? ''}
+                        onChange={handleMinPriceChange} />
+                        <input 
+                        type="text" 
+                        className="border-2 bg-transparent px-5 py-3 mb-3 w-full rounded-md" 
+                        placeholder="Max $"
+                        value={maxPrice ?? ""}
+                        onChange={handleMaxPriceChange} />
                     </div>
-                ))}
 
-                <div className="mt-5">
-                    <h2 className="text-md font-semibold mb-3">Most Popular</h2>
-                    {keywords.map((keyword, index) => (
-                        <button key={index} onClick={() => handleKeywordChange(keyword)} className=" text-sm block mb-2 px-4 py-2 w-full text-left border rounded-md hover:bg-primary hover:text-white">
-                            {keyword.toUpperCase()}
-                        </button>
+                    <div className="mt-5">
+                        <h2 className="text-md font-semibold mb-3">Category</h2>
+                    </div>
+
+                    {categories.map((category, index) => (
+                        <div key={index} className="text-sm flex-row ml-2 ">
+                            <label>
+                            <input 
+                            type="radio" 
+                            name="category" 
+                            value={category} 
+                            className="mr-2 w-[16px] h-[16px] border-1"
+                            onChange={() => handleRadioChangeCategories(category)}
+                            checked={selectedCategory === category} 
+                        />  {category.toUpperCase()}
+                            </label>
+                        </div>
                     ))}
-                </div>
 
-                <Button onClick={() => handleFilterReset()} variant="contained" size="medium" fullWidth className='hover:bg-white hover:text-primary hover:border-2 border-gray-700' color="error">
-                    Reset Filters
-                </Button>
-            </section>
-        </div>
+                    <div className="mt-5">
+                        <h2 className="text-md font-semibold mb-3">Most Popular</h2>
+                        {keywords.map((keyword, index) => (
+                            <button key={index} onClick={() => handleKeywordChange(keyword)} className=" text-sm block mb-2 px-4 py-2 w-full text-left border rounded-md hover:bg-primary hover:text-white">
+                                {keyword.toUpperCase()}
+                            </button>
+                        ))}
+                    </div>
+
+                    <Button onClick={() => handleFilterReset()} variant="contained" size="medium" fullWidth className='hover:bg-white hover:text-primary hover:border-2 border-gray-700' color="error">
+                        Reset Filters
+                    </Button>
+                </section>
+            </div>
+        </>
     );
 }
 

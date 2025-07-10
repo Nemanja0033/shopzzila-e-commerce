@@ -2,32 +2,33 @@ import { useEffect, useState } from 'react'
 import { useFilter } from '../context/FilterContext'
 import axios from 'axios'
 import ProductCard from './reusables/ProductCard'
+import Loader from './ui/Loader'
 
-const ProductsContent = () => {
+const ProductsDisplay = () => {
     const {searchQuery, selectedCategory, maxPrice, minPrice, keyword} = useFilter()
     const [products, setProducts] = useState<any[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [isFilterActive, setIsFilterActive] = useState(false);
-    // const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const itemsPerPage = 12;
     const totalProducts = 200;
-    const totalPages = Math.ceil(totalProducts / itemsPerPage)
+    const totalPages = Math.ceil(totalProducts / itemsPerPage);
 
     useEffect(() => {
         let url = `https://dummyjson.com/products?limit=${itemsPerPage}&skip=${(currentPage - 1) * itemsPerPage}`
-
         if(keyword) {
             url = `https://dummyjson.com/products/search?q=${keyword}`
         }
-        // setIsLoading(true);
+        setIsLoading(true);
+
         axios.get(url)
         .then(response => {
             setProducts(response.data.products);
-            // setIsLoading(false);
+            setIsLoading(false);
         })
         .catch(error => {
             console.log(error);
-            // setIsLoading(false);
+            setIsLoading(false);
         });
 
     }, [currentPage, keyword]);
@@ -89,21 +90,21 @@ const ProductsContent = () => {
     }
 
   return (
-    <div className='xl:w-[55rem] lg:w-[55rem] rounded-md sm:w-[40rem] p-5 border-2'>
-        <div className='flex justify-center mb-2'>
-            <h1 className='font-semibold mb-3'>PRODUCTS</h1>
-        </div>
-        <div className='grid grid-cols-2 md:grid-cols-4 gap-5'>
-            {filteredProducts.map(product => (
-              <ProductCard  key={product.id} 
-                            id={product.id} 
-                            title={product.title} 
-                            image={product.thumbnail} 
-                            price={product.price}
-                             />
-            ))}
-        </div>
-        <div className={`flex justify-between items-center mt-5 ${isFilterActive && 'hidden'}`}>
+    <div className='xl:w-[55rem] lg:w-[55rem] h-full rounded-md sm:w-[40rem] p-5 border-2'>
+        {isLoading ? <Loader /> : (
+            <div className='grid grid-cols-2 md:grid-cols-4 gap-5'>
+                {filteredProducts.map(product => (
+                <ProductCard  key={product.id} 
+                                id={product.id} 
+                                title={product.title} 
+                                image={product.thumbnail} 
+                                price={product.price}
+                                />
+                ))}
+            </div>
+        )}
+        {!keyword ? (
+            <div className={`flex justify-between items-center mt-5 ${isFilterActive && 'hidden'}`}>
                 <button disabled={currentPage === 1} onClick={() => handlePageChange(currentPage - 1)} className='border px-4 py-2 mx-2 rounded-full'>
                     Previous
                 </button>
@@ -116,8 +117,9 @@ const ProductsContent = () => {
 
                 <button disabled={currentPage === totalPages} onClick={() => handlePageChange(currentPage + 1)} className='border px-4 py-2 mx-2 rounded-full'>Next</button>
             </div>
+        ) : null}
     </div> 
   )
 }
 
-export default ProductsContent
+export default ProductsDisplay

@@ -7,39 +7,50 @@ import BackButton from "../components/ui/BackButton";
 import AddToCart from "../components/AddToCart";
 import { Product, SimilarProduct } from "../types";
 import ProductCard from "../components/reusables/ProductCard";
+import Loader from "../components/ui/Loader";
 
 const SingleProduct = () => {
     const { id } = useParams<{ id: string }>();
+    const productDetailsRef = useRef<HTMLDivElement | null>(null);
     const [product, setProducts] = useState<Product | null>(null);
     const [showInfo, setShowinfo] = useState(false);
     const [similarProducts, setSimilarProducts] = useState<SimilarProduct[]>([]); 
+    const [isLoading, setIsLoading] = useState(false);
     const [previewImage, setPreviewImage] = useState<number>(0);
     const infoRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setIsLoading(true);
                 const productResponse = await axios.get<Product>(`https://dummyjson.com/products/${id}`);
                 setProducts(productResponse.data);
+                setIsLoading(false);
+                productDetailsRef.current?.scrollIntoView();
 
                 const category = productResponse.data.category;
                 if (category) {
                     const similarProductsResponse = await axios.get<{ products: SimilarProduct[] }>(`https://dummyjson.com/products/category/${category}?limit=5`);
                     setSimilarProducts(similarProductsResponse.data.products);
+                    setIsLoading(false);
                 }
             } catch (error) {
                 console.error('Error while fetching data', error);
+                setIsLoading(false);
             }
         };
 
         fetchData();
     }, [id]);
 
-    if (!product) {
+    const changePreviewImage = (i: number) => {
+        setPreviewImage(i);
+        productDetailsRef.current?.scrollIntoView();
+    }
+
+    if (isLoading || !product) {
         return (
-            <div className="flex items-center justify-center mt-[200px]">
-                <span className="loading loading-spinner loading-lg"></span>
-            </div>
+            <Loader />
         );
     }
 
@@ -47,12 +58,12 @@ const SingleProduct = () => {
         <>
         <BackButton />
             <div className="w-full md:flex p-5 justify-center shadow-md">
-                <div className="md:w-1/2 w-full">
+                <div ref={productDetailsRef} className="md:w-1/2 w-full">
                     {product.images[0] ? (
                         <img
                         src={product.images[previewImage]}
                         alt={product.title}
-                        className="border-2 md:h-[880px] h-[600px] w-full scale-75"
+                        className="border-2 md:h-[880px] h-[600px] w-full md:scale-75"
                     />
                     )
                 :(
@@ -98,7 +109,7 @@ const SingleProduct = () => {
                     
                     <div className="grid md:grid-cols-3 grid-cols-2 gap-2 mt-5">
                         {product.images.length > 1 ? product.images.map((img, i) => (
-                            <img onClick={() => setPreviewImage(i)} className="border-2 cursor-pointer h-82" src={img} />
+                            <img onClick={() => changePreviewImage  (i)} className="border-2 cursor-pointer h-82" src={img} />
                         )) : null}
                     </div>
 
