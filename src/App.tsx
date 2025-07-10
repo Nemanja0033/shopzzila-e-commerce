@@ -5,11 +5,13 @@ import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import Navbar from "./components/shared/Navbar";
 import SingleProduct from "./pages/SingleProduct";
+import { Toaster } from "sonner";
 
 const App = () => {
   return (
     <Router>
         <Navbar />
+        <Toaster position="top-center" />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/products" element={<ProductsPage />} />

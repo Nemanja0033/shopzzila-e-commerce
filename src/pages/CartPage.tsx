@@ -14,7 +14,7 @@ const CartPage = () => {
       <div className="flex-row">
         <h1 className="text-center text-2xl font-semibold mt-12 mb-12">C A R T</h1>
             {state.items.length > 0 ? (
-              <div className="border-2 grid gap-4">
+              <div className="border-2 grid gap-4 mb-64">
                 {state.items.map((item: CartItem, index: number | null | undefined) => (
                   <div className="shadow-md md:w-[600px] rounded-md flex items-center h-32" key={index}>
                     <Button onClick={() => dispatch({ type: "REMOVE_ITEM", payload: item.id})} color="error"><Trash /></Button>

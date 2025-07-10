@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import { ShoppingBag } from "lucide-react";
 import { ProductItem } from "../types";
 import { useCart } from "../context/CartContext";
+import { toast } from "sonner";
 
 const AddToCart = ({ title, img, price, id }: ProductItem) => {
   const { dispatch } = useCart();
@@ -15,6 +16,7 @@ const AddToCart = ({ title, img, price, id }: ProductItem) => {
 
   const addToCart = () => {
     dispatch({ type: "ADD_ITEM", payload: item });
+    toast.success(`${title} added to cart!`);
   };
 
   return (

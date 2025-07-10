@@ -45,7 +45,7 @@ const CustomersSection = () => {
 
   return (
     <div className="bg-transparent w-full grid place-items-center gap-5 shadow-md py-10">
-      <div className="grid md:place-items-start place-items-center w-full">
+      <div className="grid place-items-center w-full">
         <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold md:text-start text-center">
           R E V I E W S
         </h3>
@@ -54,7 +54,7 @@ const CustomersSection = () => {
         </h1>
       </div>
       <div className="md:flex justify-center px-5">
-        <progress className="progress md:w-[500px]" value={progress} max="200"></progress>
+        <progress className="progress md:w-[700px]" value={progress} max="200"></progress>
       </div>
       <AnimatePresence mode="wait">
         <motion.div
@@ -63,7 +63,7 @@ const CustomersSection = () => {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 20 }}
           transition={{ duration: 0.5 }}
-          className="flex justify-center items-center gap-12 md:w-[650px] w-full"
+          className="flex justify-center items-center md:gap-12 md:w-[850px] w-full"
         >
         <button onClick={setPastReview} className="p-1 bg-gray-50 h-10 w-10 hover:bg-100 rounded-full"><ArrowLeft /></button>
         <div className="rounded-md shadow-md border-2 p-3">
@@ -74,7 +74,7 @@ const CustomersSection = () => {
               <span className="text-sm text-gray-500">{currentCustomer.from}</span>
             </div>
           </div>
-          <div className="text-start">
+          <div className="text-start text-gray-500">
             {currentCustomer.comment}
           </div>
         </div>
