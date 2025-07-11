@@ -72,3 +72,8 @@ export type CartAction =
 export type CartState = {
     items: CartItem[];
 };
+
+export interface Theme {
+    theme: "dark" | "light",
+    toggleChange: () => void
+}

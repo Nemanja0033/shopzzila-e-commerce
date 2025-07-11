@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { customers } from "../../utils/constants";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { Button } from "@mui/material";
 
 const CustomersSection = () => {
   const [progress, setProgress] = useState(0);
@@ -44,10 +45,10 @@ const CustomersSection = () => {
   const currentCustomer = customers[review];
 
   return (
-    <div className="bg-transparent w-full grid place-items-center gap-5 shadow-md py-10">
+    <motion.div initial={{ y: 200, opacity: 0}} whileInView={{ y: 0, opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1}} className="bg-transparent w-full grid place-items-center gap-5 py-10">
       <div className="grid place-items-center w-full">
         <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold md:text-start text-center">
-          R E V I E W S
+        T E S T I M O N I A L S
         </h3>
         <h1 className="md:ml-11 font-semibold md:text-3xl text-xl mt-3 mb-12 text-center md:text-start">
           What Our Customers Say
@@ -65,7 +66,7 @@ const CustomersSection = () => {
           transition={{ duration: 0.5 }}
           className="flex justify-center items-center md:gap-12 md:w-[850px] w-full"
         >
-        <button onClick={setPastReview} className="p-1 bg-gray-50 h-10 w-10 hover:bg-100 rounded-full"><ArrowLeft /></button>
+        <Button color="error" onClick={setPastReview}><ArrowLeft /></Button>
         <div className="rounded-md shadow-md border-2 p-3">
           <div className="w-full flex items-center gap-5 justify-start">
             <img className="rounded-full w-20 h-20" src={currentCustomer.avatar} alt="Customer Avatar" />
@@ -78,10 +79,10 @@ const CustomersSection = () => {
             {currentCustomer.comment}
           </div>
         </div>
-        <button onClick={setNextReview} className="p-1 bg-gray-50 h-10 w-10 hover:bg-100 rounded-full"><ArrowRight /></button>
+        <Button color="error" onClick={setNextReview}><ArrowRight /></Button>
       </motion.div>
     </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,13 +1,12 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useAnim } from "../../hooks/useAnim";
 import ProductCard from "../reusables/ProductCard";
+import { motion } from "framer-motion";
 
 const FeaturedProducts = () => {
-  const featuredProductsRef = useRef<HTMLDivElement | null>(null);
   const [products, setProducts] = useState<any[]>([]);
   const [product2, setProducts2] = useState<any[]>([]);
   const [product3, setProducts3] = useState<any[]>([]);
@@ -27,10 +26,9 @@ const FeaturedProducts = () => {
     fetchProducts('https://dummyjson.com/products/category/smartphones?limit=5', setProducts3);
   }, []);
 
-  useAnim(featuredProductsRef);
 
   return (
-    <div id='featured' ref={featuredProductsRef} className='w-full flex-row bg-transparent mt-5 mb-[100px] shadow-md'>
+    <motion.div initial={{ y: 200, opacity: 0}} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 1}}  viewport={{ once: true }} id='featured' className='w-full flex-row bg-transparent mt-5 mb-[100px] shadow-md'>
       <div className="flex md:justify-start justify-center">
         <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold">F E A T U R E D</h3>
       </div>
@@ -50,7 +48,7 @@ const FeaturedProducts = () => {
         ))}
       </div>
 
-      <div className="flex md:justify-start justify-center mt-20 md:mt-12">
+      {/* <div className="flex md:justify-start justify-center mt-20 md:mt-12">
         <h1 className="md:ml-11 font-semibold md:text-3xl text-xl">Women's corner</h1>
       </div>
 
@@ -62,10 +60,10 @@ const FeaturedProducts = () => {
             image={product2.thumbnail}
             price={product2.price} />
         ))}
-      </div>
+      </div> */}
 
       
-      <div className="flex md:justify-start justify-center  mt-20 md:mt-12">
+      {/* <div className="flex md:justify-start justify-center  mt-20 md:mt-12">
         <h1 className="md:ml-11 font-semibold md:text-3xl text-xl">Free Shiping On Smartphones</h1>
       </div>
 
@@ -77,7 +75,8 @@ const FeaturedProducts = () => {
             image={product3.thumbnail}
             price={product3.price} />
         ))}
-      </div>
+      </div> */}
+      
       <div className="flex justify-center mt-3">
         <Link to={'/products'}>
         <Button variant="text" color="error">All Products <ArrowRight /></Button>
@@ -85,7 +84,7 @@ const FeaturedProducts = () => {
       </div>
       <br />
       <hr />
-    </div>
+    </motion.div>
   );
 };
 

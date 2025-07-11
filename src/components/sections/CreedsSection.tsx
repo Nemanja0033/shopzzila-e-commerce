@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { creed1, creed2, creed3 } from "../../utils/constants";
 
 const CreedsSection = () => {
@@ -8,12 +9,12 @@ const CreedsSection = () => {
     ];
 
     return (
-      <div className="bg-transparent shadow-md">
+      <motion.div initial={{ y: 200, opacity: 0}} whileInView={{ y: 0, opacity: 1 }} transition={{ duration: 1}}  viewport={{ once: true }} className="bg-transparent shadow-md">
           <h3 className="md:ml-11 ml-0 mt-3 text-primary font-semibold md:text-start text-center">C R E E D S</h3>
           <h1 className=" md:ml-11 font-semibold md:text-3xl text-xl mt-3 mb-12 text-center md:text-start">What We Stand For</h1>
-          <div className="md:flex justify-center px-5">
+          <div className="md:flex justify-center gap-5 px-5">
               {creeds.map((creed, index) => (
-                  <div key={index} className="w-full flex-row mt-20 md:mt-0">
+                  <div key={index} className="w-full p-2 flex-row shadow-md border-1 rounded-md mt-20 md:mt-0">
                       <h1 className="ml-11  font-semibold text-3xl mt-3 text-center">{creed.title}</h1>
                       <div className="flex justify-center mt-3 mb-3">
                           <creed.icon className="text-red-500" />
@@ -23,7 +24,7 @@ const CreedsSection = () => {
               ))}
           </div>
           <br /><br />
-      </div>
+      </motion.div>
   );
 }
 

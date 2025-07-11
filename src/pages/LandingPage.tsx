@@ -3,8 +3,11 @@ import PromoSection from '../components/sections/CreedsSection'
 import Footer from '../components/shared/Footer'
 import FeaturedProducts from '../components/sections/FeaturedProducts'
 import CustomersSection from '../components/sections/CustomersSection'
+import { useTheme } from '../context/ThemeContext'
 
 const LandingPage = () => {
+  const { theme } = useTheme()
+  
   return (
     <main className='grid'>
       <HeroBanner />
@@ -12,11 +15,11 @@ const LandingPage = () => {
       <div className='mb-20'>
         <PromoSection />
       </div>
-      <div className='bg-gray-100'>
+      <div className={`${theme === 'light' ? 'bg-gray-50' : 'bg-transparent'}`}>
         <CustomersSection />
       </div>
-      <div className='bg-gray-100'>
-      <Footer />
+      <div className={`${theme === 'light' ? 'bg-gray-50' : 'bg-transparent'}`}>
+        <Footer />
       </div>
     </main>
   )
