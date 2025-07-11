@@ -8,8 +8,8 @@ import { motion } from "framer-motion";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<any[]>([]);
-  const [product2, setProducts2] = useState<any[]>([]);
-  const [product3, setProducts3] = useState<any[]>([]);
+  // const [product2, setProducts2] = useState<any[]>([]);
+  // const [product3, setProducts3] = useState<any[]>([]);
 
   const fetchProducts = async (url: string, setter: React.Dispatch<React.SetStateAction<any[]>>) => {
     try {
@@ -22,8 +22,8 @@ const FeaturedProducts = () => {
 
   useEffect(() => {
     fetchProducts('https://dummyjson.com/products/category/home-decoration', setProducts);
-    fetchProducts('https://dummyjson.com/products/category/beauty', setProducts2);
-    fetchProducts('https://dummyjson.com/products/category/smartphones?limit=5', setProducts3);
+    // fetchProducts('https://dummyjson.com/products/category/beauty', setProducts2);
+    // fetchProducts('https://dummyjson.com/products/category/smartphones?limit=5', setProducts3);
   }, []);
 
 
