@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import { ArrowLeft, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { CartItem } from "../types";
 import { Link } from "react-router-dom";
