@@ -67,7 +67,7 @@ const CustomersSection = () => {
           className="flex justify-center items-center md:gap-12 md:w-[850px] w-full"
         >
         <Button color="error" onClick={setPastReview}><ArrowLeft /></Button>
-        <div className="rounded-md shadow-md border-2 p-3">
+        <div className="rounded-md shadow-md p-3">
           <div className="w-full flex items-center gap-5 justify-start">
             <img className="rounded-full w-20 h-20" src={currentCustomer.avatar} alt="Customer Avatar" />
             <div className="grid gap-1">

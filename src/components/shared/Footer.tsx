@@ -2,7 +2,7 @@ import { GithubIcon } from "lucide-react";
 
 const Footer = () => {
     return (
-        <><div className="flex flex-col md:flex-row w-full md:justify-evenly p-6 border-t-2 mt-32 shadow-sm">
+        <><div className="flex flex-col md:flex-row w-full md:justify-evenly p-6 mt-32 shadow-sm">
             <div className="flex flex-col items-center md:items-start mt-6 md:mt-0 mb-6 md:mb-0 md:w-1/3 px-4">
                 <h1 className="font-semibold text-2xl mb-3 text-center md:text-left">Shopzzila®</h1>
                 <p className="text-gray-500 text-center md:text-left leading-relaxed">

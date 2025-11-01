@@ -8,8 +8,6 @@ import { motion } from "framer-motion";
 
 const FeaturedProducts = () => {
   const [products, setProducts] = useState<any[]>([]);
-  // const [product2, setProducts2] = useState<any[]>([]);
-  // const [product3, setProducts3] = useState<any[]>([]);
 
   const fetchProducts = async (url: string, setter: React.Dispatch<React.SetStateAction<any[]>>) => {
     try {
@@ -22,8 +20,6 @@ const FeaturedProducts = () => {
 
   useEffect(() => {
     fetchProducts('https://dummyjson.com/products/category/home-decoration', setProducts);
-    // fetchProducts('https://dummyjson.com/products/category/beauty', setProducts2);
-    // fetchProducts('https://dummyjson.com/products/category/smartphones?limit=5', setProducts3);
   }, []);
 
 
@@ -48,42 +44,12 @@ const FeaturedProducts = () => {
         ))}
       </div>
 
-      {/* <div className="flex md:justify-start justify-center mt-20 md:mt-12">
-        <h1 className="md:ml-11 font-semibold md:text-3xl text-xl">Women's corner</h1>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
-        {product2.map((product2) => (
-          <ProductCard key={product2.id}
-            id={product2.id}
-            title={product2.title}
-            image={product2.thumbnail}
-            price={product2.price} />
-        ))}
-      </div> */}
-
-      
-      {/* <div className="flex md:justify-start justify-center  mt-20 md:mt-12">
-        <h1 className="md:ml-11 font-semibold md:text-3xl text-xl">Free Shiping On Smartphones</h1>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-5 mt-5 ml-10 mr-10">
-        {product3.map((product3) => (
-          <ProductCard key={product3.id}
-            id={product3.id}
-            title={product3.title}
-            image={product3.thumbnail}
-            price={product3.price} />
-        ))}
-      </div> */}
-      
       <div className="flex justify-center mt-3">
         <Link to={'/products'}>
         <Button variant="text" color="error">All Products <ArrowRight /></Button>
         </Link>
       </div>
       <br />
-      <hr />
     </motion.div>
   );
 };

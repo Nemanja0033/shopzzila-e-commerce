@@ -35,7 +35,7 @@ const CartPage = () => {
               <div className="grid place-items-center gap-5">
                 <p className="font-semibold text-4xl mt-20 text-center">Your cart is empty . . .</p>
                 <Link to={'/products'}>
-                  <Button color="error" >Keep Shoping <ArrowLeft /></Button>
+                  <Button color="error" variant="contained">Keep Shoping</Button>
                 </Link>
               </div>
             )}

@@ -26,22 +26,17 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav ref={navRef} className={`w-full h-[80px] bg-base-100 shadow-md flex justify-between md:px-12 px-2 ${isSticky ? 'fixed top-0 left-0 z-50' : ''}`}>
+    <nav ref={navRef} className={`w-full h-[80px] bg-base-100 shadow-md flex justify-between items-center md:px-12 px-2 ${isSticky ? 'fixed top-0 left-0 z-50' : ''}`}>
       <div>
         <Link to={'/'}>
             <img className="h-16" src={logoUrl} alt="logo" />
         </Link>
       </div>
 
-      <div className="flex md:gap-24 gap-5 items-center">
-        <Link to="/" className="hover:text-primary">Home</Link>
-        <Link to="/products" className="hover:text-primary">Products</Link>
-        <Link to="/about" className="hover:text-primary">About</Link>
-      </div>
-
-      <div className="flex items-center">
-        <CartLink />
-        <ThemeToggler />
+      <div className="flex w-full gap-1 justify-end items-center">
+          <Link to="/products" className="hover:text-primary mr-4">Products</Link>
+          <CartLink />
+          <ThemeToggler />
       </div>
     </nav>
   );
