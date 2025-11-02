@@ -89,6 +89,14 @@ const ProductsDisplay = () => {
         return buttons;
     }
 
+  if(filteredProducts.length < 1){
+    return (
+        <div className='xl:w-[55rem] flex justify-center items-center lg:w-[55rem] h-[36.2rem] rounded-md sm:w-[40rem] p-5 border-2'>
+            <span className='text-gray-400'>Product not found</span>
+        </div>
+    )
+  }
+
   return (
     <div className='xl:w-[55rem] lg:w-[55rem] h-full rounded-md sm:w-[40rem] p-5 border-2'>
         {isLoading ? <Loader /> : (

@@ -5,9 +5,9 @@ import { FetchResponse } from "../../types";
 import { MenuIcon } from "lucide-react";
 
 const Sidebar = () => {
-    const { searchQuery, setSearchQuery, selectedCategory, setSelectedCategory, minPrice, setMinPrice, maxPrice, setMaxPrice, setKeyword } = useFilter();
+    const { searchQuery, setSearchQuery, setSelectedCategory, minPrice, setMinPrice, maxPrice, setMaxPrice, keyword, setKeyword } = useFilter();
     const [isMenuVisible, setIsMenuVisible] = useState(false);
-    const [categories, setCategories] = useState<string[]>([]);
+    const [_, setCategories] = useState<string[]>([]);
     const [keywords] = useState<string[]>([ "Fashion","Smartphone","Watch","Sport","home","shirt" ]);
 
     useEffect(() => {
@@ -42,9 +42,9 @@ const Sidebar = () => {
         setMaxPrice(value ? parseFloat(value) : undefined)
     };
 
-    const handleRadioChangeCategories = (category: string) => {
-        setSelectedCategory(category)
-    }
+    // const handleRadioChangeCategories = (category: string) => {
+    //     setSelectedCategory(category)
+    // }
 
     const handleKeywordChange = (keyword: string) => {
         setKeyword(keyword);
@@ -93,11 +93,11 @@ const Sidebar = () => {
                         onChange={handleMaxPriceChange} />
                     </div>
 
-                    <div className="mt-5">
+                    {/* <div className="mt-5">
                         <h2 className="text-md font-semibold mb-3">Category</h2>
-                    </div>
+                    </div> */}
 
-                    {categories.map((category, index) => (
+                    {/* {categories.map((category, index) => (
                         <div key={index} className="text-sm flex-row ml-2 ">
                             <label>
                             <input 
@@ -110,13 +110,13 @@ const Sidebar = () => {
                         />  {category.toUpperCase()}
                             </label>
                         </div>
-                    ))}
+                    ))} */}
 
                     <div className="mt-5">
                         <h2 className="text-md font-semibold mb-3">Most Popular</h2>
-                        {keywords.map((keyword, index) => (
-                            <button key={index} onClick={() => handleKeywordChange(keyword)} className=" text-sm block mb-2 px-4 py-2 w-full text-left border rounded-md hover:bg-primary hover:text-white">
-                                {keyword.toUpperCase()}
+                        {keywords.map((k, index) => (
+                            <button key={index} onClick={() => handleKeywordChange(k)} className={`text-sm block mb-2 px-4 py-2 w-full text-left border rounded-md ${k === keyword && 'bg-primary text-white'} hover:bg-primary hover:text-white`}>
+                                {k.toUpperCase()}
                             </button>
                         ))}
                     </div>
